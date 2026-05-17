@@ -30,7 +30,7 @@ function HeroSection() {
 
     // Counter animation
     function animateCounter(
-      ref: React.RefObject<HTMLSpanElement>,
+      ref: React.RefObject<HTMLSpanElement | null>,
       target: number,
       delay: number,
       suffix: string
