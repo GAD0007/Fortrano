@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { workColumns } from '../data/siteData'
-import { headingClass } from '../lib/styles'
+import { headingClass, h2Class } from '../lib/styles'
 
 function WorkSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -51,7 +51,7 @@ function WorkSection() {
       <div className="mx-auto grid max-w-[1230px] gap-8 px-5 pb-10 pt-14 sm:px-8 sm:pb-14 sm:pt-20 md:gap-12 md:pb-20 md:pt-28 lg:grid-cols-2 lg:px-10 lg:pb-28 lg:pt-40">
         <div>
           <p className="mb-5 text-xs font-black uppercase tracking-[0.48em] text-[#1e90ff]">Who we are</p>
-          <h2 className={`${headingClass} text-[clamp(1.65rem,3.6vw,3rem)] text-[#0d1b5e]`}>
+          <h2 className={`${h2Class} text-[#0d1b5e]`}>
             Beauty may be
             <br />
             skin deep - but

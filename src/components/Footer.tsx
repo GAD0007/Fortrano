@@ -15,8 +15,8 @@ function Footer() {
   return (
     <footer className="bg-[#0b0f1e] text-white">
       <div className="mx-auto max-w-[1390px] px-5 pb-9 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-2 gap-10 rounded-t-none bg-white px-8 py-12 text-[#0d1b5e] lg:grid-cols-[1.05fr_0.9fr_0.95fr_1.05fr_0.9fr] lg:gap-12 lg:px-12">
-          <div className="col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-1 gap-10 rounded-t-none bg-white px-7 py-12 text-[#0d1b5e] sm:grid-cols-2 lg:grid-cols-[1.05fr_0.9fr_0.95fr_1.05fr_0.9fr] lg:gap-12 lg:px-12">
+          <div className="sm:col-span-2 lg:col-span-1">
             <a href="#" className="block w-[200px]">
               <img src="/IMG_9308.PNG" alt="Fortrano Technology" className="h-auto w-full object-contain" />
             </a>
@@ -35,7 +35,7 @@ function Footer() {
           <div>
             <h3 className={`${headingClass} mb-5 text-lg text-[#0d1b5e]`}>Info</h3>
             <div className="grid gap-3 text-base font-bold text-[#0d1b5e]/80">
-              <a href="mailto:hello@fortranotech.com" className="transition hover:text-[#1e90ff]">hello@fortranotech.com</a>
+              <a href="mailto:hello@fortranotech.com" className="break-words transition hover:text-[#1e90ff]">hello@fortranotech.com</a>
               <a href="tel:+2340000000000" className="transition hover:text-[#1e90ff]">+234 000 000 0000</a>
               <p>Lagos, Nigeria</p>
               <p>Remote Worldwide</p>

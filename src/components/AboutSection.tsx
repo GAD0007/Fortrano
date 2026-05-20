@@ -1,4 +1,4 @@
-import { headingClass } from '../lib/styles'
+import { h2Class } from '../lib/styles'
 
 function AboutSection() {
   return (
@@ -9,7 +9,7 @@ function AboutSection() {
           <p className="bg-gradient-to-r from-[#0d1b5e] via-[#1e90ff] to-[#10b9e8] bg-clip-text text-[clamp(5.5rem,15vw,9rem)] font-black uppercase leading-[0.78] text-transparent">
             50+
           </p>
-          <h2 className={`${headingClass} mt-8 text-[clamp(1.8rem,4vw,3rem)] text-[#0d1b5e]`}>
+          <h2 className={`${h2Class} mt-8 text-[#0d1b5e]`}>
             Brands Trust<span className="block">Our Agency.</span>
           </h2>
         </div>

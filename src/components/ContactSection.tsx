@@ -1,4 +1,4 @@
-import { headingClass } from '../lib/styles'
+import { h2Class } from '../lib/styles'
 
 function ContactSection() {
   return (
@@ -8,7 +8,7 @@ function ContactSection() {
           <p className="mb-12 text-xs font-black uppercase tracking-[0.58em] text-[#1e90ff] sm:text-sm">
             Tell us about your project
           </p>
-          <h2 className={`${headingClass} mx-auto max-w-[980px] bg-gradient-to-r from-[#ffffff] via-[#10b9e8] to-[#1e90ff] bg-clip-text text-[clamp(3.2rem,8vw,7rem)] text-transparent`}>
+          <h2 className={`${h2Class} mx-auto max-w-[980px] bg-gradient-to-r from-[#ffffff] via-[#10b9e8] to-[#1e90ff] bg-clip-text text-transparent`}>
             Let's Make Cool<span className="block">Shit Together</span>
           </h2>
           <a

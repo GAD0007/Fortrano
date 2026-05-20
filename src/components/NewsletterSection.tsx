@@ -1,11 +1,11 @@
-import { headingClass } from '../lib/styles'
+import { h2Class } from '../lib/styles'
 
 function NewsletterSection() {
   return (
     <section className="bg-gradient-to-r from-[#0d1b5e] via-[#1e90ff] to-[#10b9e8] text-white">
       <div className="mx-auto grid max-w-[1230px] items-center gap-10 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:px-10 lg:py-28">
         <div>
-          <h2 className={`${headingClass} text-[clamp(2.2rem,5vw,3.8rem)] text-white`}>
+          <h2 className={`${h2Class} text-white`}>
             Sign up for our email
             <br />
             newsletter

@@ -2,33 +2,11 @@
 import { useEffect, useRef } from 'react'
 
 function HeroSection() {
-  const line1Ref = useRef<HTMLDivElement>(null)
   const c1Ref = useRef<HTMLSpanElement>(null)
   const c2Ref = useRef<HTMLSpanElement>(null)
   const c3Ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    // Character drop animation for "WHERE BRANDS"
-    const el = line1Ref.current
-    if (!el) return
-    const text = 'WHERE BRANDS'
-    const delays = [0.15,0.2,0.25,0.3,0.35,0.38,0.45,0.5,0.55,0.6,0.65,0.68]
-    let di = 0
-    el.innerHTML = ''
-    text.split('').forEach((ch) => {
-      const span = document.createElement('span')
-      span.className = `inline-block opacity-0 ${ch === ' ' ? 'w-[0.3em]' : ''}`
-      span.style.cssText = `
-        transform: translateY(-60px) rotateX(90deg);
-        animation: charDrop 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
-        animation-delay: ${ch === ' ' ? 0 : delays[di++] || 0.7}s;
-        transform-origin: top center;
-      `
-      span.textContent = ch === ' ' ? '\u00A0' : ch
-      el.appendChild(span)
-    })
-
-    // Counter animation
     function animateCounter(
       ref: React.RefObject<HTMLSpanElement | null>,
       target: number,
@@ -42,189 +20,239 @@ function HeroSection() {
         const t = setInterval(() => {
           start = Math.min(start + inc, target)
           if (ref.current)
-            ref.current.innerHTML = `${Math.round(start)}<span class="text-[#1e90ff]">${suffix}</span>`
+            ref.current.innerHTML = `${Math.round(start)}<span style="color:#1e90ff">${suffix}</span>`
           if (start >= target) clearInterval(t)
         }, 16)
       }, delay)
     }
-
-    animateCounter(c1Ref, 100, 3600, '+')
-    animateCounter(c2Ref, 50, 3700, '+')
-    animateCounter(c3Ref, 98, 3800, '%')
+    animateCounter(c1Ref, 100, 1400, '+')
+    animateCounter(c2Ref, 50,  1500, '+')
+    animateCounter(c3Ref, 98,  1600, '%')
   }, [])
 
   return (
     <>
       <style>{`
-        @keyframes charDrop {
-          to { opacity: 1; transform: translateY(0) rotateX(0deg); }
+        /* ── Core word-mask reveal ─────────────────────────────── */
+        @keyframes wordUp {
+          from { transform: translateY(115%); opacity: 0; }
+          to   { transform: translateY(0);    opacity: 1; }
         }
-        @keyframes typeReveal {
-          0% { max-width: 0; opacity: 1; }
-          100% { max-width: 600px; opacity: 1; }
+        .word-mask  {
+          display: inline-block;
+          overflow: hidden;
+          vertical-align: bottom;
+          /* extra height so descenders aren't clipped */
+          padding-bottom: 0.06em;
+          margin-bottom: -0.06em;
         }
-        @keyframes edgeSplitUp {
-          0% { opacity: 1; transform: translateY(0) scaleX(1); }
-          100% { opacity: 0; transform: translateY(-30px) scaleX(1.1); }
+        .word-inner {
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(115%);
+          will-change: transform, opacity;
         }
-        @keyframes edgeSplitDown {
-          0% { opacity: 1; transform: translateY(0) scaleX(1); }
-          100% { opacity: 0; transform: translateY(30px) scaleX(1.1); }
+        /* Stagger: 5 words across the two heading lines */
+        .w1 .word-inner { animation: wordUp 0.75s cubic-bezier(0.16,1,0.3,1) 0.10s forwards; }
+        .w2 .word-inner { animation: wordUp 0.75s cubic-bezier(0.16,1,0.3,1) 0.25s forwards; }
+        .w3 .word-inner { animation: wordUp 0.75s cubic-bezier(0.16,1,0.3,1) 0.42s forwards; }
+        .w4 .word-inner { animation: wordUp 0.75s cubic-bezier(0.16,1,0.3,1) 0.60s forwards; }
+        .w5 .word-inner { animation: wordUp 0.75s cubic-bezier(0.16,1,0.3,1) 0.78s forwards; }
+
+        /* ── "THEIR" — animated gradient text ─────────────────── */
+        @keyframes gradShift {
+          0%   { background-position: 0%   50%; }
+          100% { background-position: 200% 50%; }
         }
-        @keyframes edgeReveal {
-          0% { opacity: 0; transform: scaleX(0.8); }
-          100% { opacity: 1; transform: scaleX(1); }
+        .grad-their {
+          background: linear-gradient(90deg,#1e90ff,#10b9e8,#1e90ff,#0060d0,#1e90ff);
+          background-size: 300% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: gradShift 3s linear 1.1s infinite;
         }
-        @keyframes edgeScan {
-          0% { left: -40%; }
-          100% { left: 120%; }
+
+        /* ── "EDGE" — gradient + repeating glow pulse ──────────── */
+        @keyframes edgeGlow {
+          0%,100% { filter: drop-shadow(0 0 6px rgba(30,144,255,0.35)); }
+          50%     { filter: drop-shadow(0 0 18px rgba(16,185,232,0.65)); }
         }
+        .glow-edge {
+          background: linear-gradient(90deg,#0d1b5e 20%,#1e90ff 55%,#10b9e8 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: edgeGlow 2.5s ease-in-out 1.3s infinite;
+        }
+
+        /* ── Heading scan line ─────────────────────────────────── */
+        @keyframes scanLine {
+          from { left: -12%; opacity: 1; }
+          to   { left: 112%; opacity: 0; }
+        }
+        .heading-scan {
+          position: absolute;
+          top: 0; bottom: 0;
+          width: 120px;
+          background: linear-gradient(90deg, transparent, rgba(30,144,255,0.18), transparent);
+          pointer-events: none;
+          animation: scanLine 1.6s ease-out 0.95s forwards;
+        }
+
+        /* ── Underline grow ────────────────────────────────────── */
+        @keyframes lineGrow {
+          from { transform: scaleX(0); }
+          to   { transform: scaleX(1); }
+        }
+        .accent-line {
+          transform-origin: center;
+          transform: scaleX(0);
+          animation: lineGrow 0.9s cubic-bezier(0.16,1,0.3,1) 1.0s forwards;
+        }
+
+        /* ── General fade up ───────────────────────────────────── */
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(22px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Grid pan ──────────────────────────────────────────── */
         @keyframes gridPan {
-          0% { background-position: 0 0; }
-          100% { background-position: 40px 40px; }
+          from { background-position: 0 0; }
+          to   { background-position: 40px 40px; }
         }
-        @keyframes statusPulse {
-          0%,100% { box-shadow: 0 0 0 0 rgba(16,185,232,0.4); }
-          50% { box-shadow: 0 0 0 5px rgba(16,185,232,0); }
-        }
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(200%); }
-        }
-        @keyframes scrollPulse {
-          0%,100% { opacity: 0.4; }
-          50% { opacity: 1; }
-        }
-        @keyframes fadeSlideUp {
-          0% { opacity: 0; transform: translateY(30px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
+
+        /* ── Orb float ─────────────────────────────────────────── */
         @keyframes orbFloat {
-          0%,100% { opacity: 0.6; transform: translateY(0); }
-          50% { opacity: 1; transform: translateY(-20px); }
+          0%,100% { transform: translateY(0); }
+          50%     { transform: translateY(-18px); }
         }
-        .edge-ghost1 {
-          animation: edgeSplitUp 0.7s cubic-bezier(0.25,0.46,0.45,0.94) forwards 2.2s;
-          opacity: 0;
+
+        /* ── Badge dot pulse ───────────────────────────────────── */
+        @keyframes dotPulse {
+          0%,100% { box-shadow: 0 0 0 0 rgba(16,185,232,0.5); }
+          50%     { box-shadow: 0 0 0 5px rgba(16,185,232,0); }
         }
-        .edge-ghost2 {
-          animation: edgeSplitDown 0.7s cubic-bezier(0.25,0.46,0.45,0.94) forwards 2.2s;
-          opacity: 0;
+
+        /* ── CTA shimmer ───────────────────────────────────────── */
+        @keyframes shimmer {
+          from { transform: translateX(-100%); }
+          to   { transform: translateX(300%); }
         }
-        .edge-main {
-          animation: edgeReveal 0.5s ease forwards 1.95s;
-          opacity: 0;
-        }
-        .edge-scan {
-          animation: edgeScan 1.2s ease forwards 2.5s;
-        }
-        .word-their {
-          animation: typeReveal 0.7s steps(5,end) forwards 1.4s;
-          max-width: 0;
-          opacity: 0;
-        }
-        .word-their::after {
+        .cta-btn { position: relative; overflow: hidden; }
+        .cta-btn::before {
           content: '';
-          position: absolute;
-          right: -4px; top: 10%; height: 80%;
-          width: 3px;
-          background: #1e90ff;
-          animation: cursorBlink 0.7s step-end 3;
-        }
-        @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
-        .cta-primary::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+          position: absolute; inset: 0;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
           transform: translateX(-100%);
-          animation: shimmer 3s ease 4s infinite;
+          animation: shimmer 3.2s ease 2s infinite;
+        }
+
+        /* ── Scroll hint ───────────────────────────────────────── */
+        @keyframes scrollPulse {
+          0%,100% { opacity: 0.3; }
+          50%     { opacity: 1; }
         }
       `}</style>
 
-      <section className="relative min-h-[calc(100vh-56px)] bg-white overflow-hidden flex flex-col items-center justify-center text-center px-5 pb-24 pt-12">
+      <section className="relative bg-white overflow-hidden flex flex-col items-center justify-center text-center px-5 pt-8 pb-10 md:pt-12 md:pb-14">
 
-        {/* Grid bg */}
-        <div className="pointer-events-none absolute inset-0 opacity-100"
+        {/* ── Animated grid ── */}
+        <div
+          className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage: 'linear-gradient(rgba(30,144,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(30,144,255,0.04) 1px,transparent 1px)',
+            backgroundImage:
+              'linear-gradient(rgba(30,144,255,0.04) 1px,transparent 1px),' +
+              'linear-gradient(90deg,rgba(30,144,255,0.04) 1px,transparent 1px)',
             backgroundSize: '40px 40px',
-            animation: 'gridPan 20s linear infinite'
-          }} />
+            animation: 'gridPan 20s linear infinite',
+          }}
+        />
 
-        {/* Corner brackets */}
-        {[['top-6 left-6 border-t-2 border-l-2',''],['top-6 right-6 border-t-2 border-r-2',''],['bottom-6 left-6 border-b-2 border-l-2',''],['bottom-6 right-6 border-b-2 border-r-2','']].map(([cls],i) => (
-          <div key={i} className={`absolute w-8 h-8 border-[#0d1b5e]/20 ${cls}`} />
+        {/* ── Ambient orbs ── */}
+        <div className="pointer-events-none absolute top-[8%] left-[4%] w-60 h-60 rounded-full"
+          style={{ background: 'radial-gradient(circle,rgba(30,144,255,0.11) 0%,transparent 70%)', animation: 'orbFloat 7s ease-in-out infinite' }} />
+        <div className="pointer-events-none absolute top-[18%] right-[5%] w-40 h-40 rounded-full"
+          style={{ background: 'radial-gradient(circle,rgba(16,185,232,0.09) 0%,transparent 70%)', animation: 'orbFloat 7s ease-in-out 2.5s infinite' }} />
+        <div className="pointer-events-none absolute bottom-[22%] left-[8%] w-28 h-28 rounded-full"
+          style={{ background: 'radial-gradient(circle,rgba(30,144,255,0.07) 0%,transparent 70%)', animation: 'orbFloat 5s ease-in-out 1s infinite' }} />
+
+        {/* ── Corner brackets ── */}
+        {(['top-5 left-5 border-t-2 border-l-2', 'top-5 right-5 border-t-2 border-r-2', 'bottom-5 left-5 border-b-2 border-l-2', 'bottom-5 right-5 border-b-2 border-r-2'] as const).map((cls, i) => (
+          <div key={i} className={`absolute w-7 h-7 border-[#0d1b5e]/15 ${cls}`} />
         ))}
 
-        {/* Orbs */}
-        <div className="pointer-events-none absolute top-[10%] left-[5%] w-44 h-44 rounded-full" style={{background:'radial-gradient(circle,rgba(30,144,255,0.1) 0%,transparent 70%)',animation:'orbFloat 6s ease-in-out infinite'}} />
-        <div className="pointer-events-none absolute top-[20%] right-[8%] w-28 h-28 rounded-full" style={{background:'radial-gradient(circle,rgba(16,185,232,0.09) 0%,transparent 70%)',animation:'orbFloat 6s ease-in-out 2s infinite'}} />
+       
 
-        {/* Status badge */}
-        <div className="mb-8 flex items-center gap-2 rounded-full border border-[#1e90ff]/20 bg-[#1e90ff]/6 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#1e90ff]"
-          style={{animation:'fadeSlideUp 0.5s ease forwards 0.1s', opacity: 0}}>
-          <span className="h-1.5 w-1.5 rounded-full bg-[#10b9e8]" style={{animation:'statusPulse 2s ease-in-out infinite'}} />
-          Now accepting new projects
-        </div>
+        {/* ── Main heading ── */}
+        <div className="relative mb-4 max-w-[1000px]">
+          {/* scan beam */}
+          <div className="heading-scan" />
 
-        {/* Heading */}
-        <div className="relative max-w-[900px] mb-6">
-          {/* Line 1 — chars drop in */}
-          <div
-            ref={line1Ref}
-            className="flex justify-center gap-[0.06em] text-[clamp(2.5rem,10vw,6rem)] font-black uppercase leading-none text-[#0d1b5e] mb-2"
-            style={{letterSpacing:'-0.02em', perspective: '400px'}}
-          />
+          {/*
+            Each word is wrapped in:
+              .word-mask  — overflow:hidden container (clips the slide-up)
+              .word-inner — the actual word, starts off-screen, slides up
+            
+            &nbsp; at the end of words that need a trailing space
+            ensures browser-native word spacing — no flex-gap tricks needed.
+          */}
 
-          {/* Line 2 */}
-       <div className="flex flex-wrap items-baseline justify-center gap-[0.5em] leading-none overflow-hidden">
-            <span className="text-[clamp(2.5rem,10vw,6rem)] font-black uppercase text-[#0d1b5e]"
-              style={{letterSpacing:'-0.02em', opacity:0, animation:'fadeSlideUp 0.6s ease forwards 0.9s'}}>
-              Get
-            </span>
-
-            <span className="relative overflow-hidden whitespace-nowrap text-[clamp(2.5rem,10vw,6rem)] font-black uppercase text-[#1e90ff] word-their"
-              style={{letterSpacing:'-0.02em'}}>
-              Their
-            </span>
-
-            <span className="relative inline-block">
-              <span className="edge-ghost1 absolute inset-0 text-[clamp(2.5rem,10vw,6rem)] font-black uppercase text-[#0d1b5e]/15" style={{letterSpacing:'-0.02em'}}>Edge</span>
-              <span className="edge-ghost2 absolute inset-0 text-[clamp(2.5rem,10vw,6rem)] font-black uppercase text-[#1e90ff]/20" style={{letterSpacing:'-0.02em'}}>Edge</span>
-              <span className="edge-main relative text-[clamp(2.5rem,10vw,6rem)] font-black uppercase"
-                style={{letterSpacing:'-0.02em', background:'linear-gradient(90deg,#0d1b5e,#1e90ff,#10b9e8)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text'}}>
-                Edge
-              </span>
-              <span className="edge-scan absolute top-0 bottom-0 w-[40%] pointer-events-none"
-                style={{background:'linear-gradient(90deg,transparent,rgba(30,144,255,0.25),transparent)'}} />
-            </span>
+          {/* Line 1: WHERE BRANDS */}
+          <div className="text-[clamp(3rem,10vw,6.5rem)] font-black uppercase leading-[0.95] tracking-[-0.02em] text-[#0d1b5e]">
+            <span className="word-mask w1"><span className="word-inner">WHERE&nbsp;</span></span>
+            <span className="word-mask w2"><span className="word-inner">BRANDS</span></span>
           </div>
+
+          {/* Line 2: GET THEIR EDGE */}
+          <div className="text-[clamp(3rem,10vw,6.5rem)] font-black uppercase leading-[0.95] tracking-[-0.02em]">
+            <span className="word-mask w3"><span className="word-inner text-[#0d1b5e]">GET&nbsp;</span></span>
+            <span className="word-mask w4"><span className="word-inner grad-their">THEIR&nbsp;</span></span>
+            <span className="word-mask w5"><span className="word-inner glow-edge">EDGE</span></span>
+          </div>
+
+          {/* Accent underline */}
+          <div
+            className="mx-auto mt-5 h-[3px] w-[55%] rounded-full accent-line"
+            style={{ background: 'linear-gradient(90deg, transparent, #1e90ff, #10b9e8, transparent)' }}
+          />
         </div>
 
-        {/* Subtitle */}
-        <p className="max-w-[600px] text-base font-semibold leading-relaxed text-[#0d1b5e]/65 sm:text-lg"
-          style={{opacity:0, animation:'fadeSlideUp 0.7s ease forwards 3s'}}>
+        {/* ── Subtitle ── */}
+        <p
+          className="max-w-[540px] text-base font-semibold leading-relaxed text-[#0d1b5e]/60 sm:text-lg"
+          style={{ opacity: 0, animation: 'fadeUp 0.6s ease 1.3s forwards' }}
+        >
           An integrated branding, strategy, and web development studio that helps ambitious companies stand out with sharp digital experiences.
         </p>
 
-        {/* CTAs */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4"
-          style={{opacity:0, animation:'fadeSlideUp 0.7s ease forwards 3.3s'}}>
-          <a href="#contact" className="relative overflow-hidden bg-[#0d1b5e] px-10 py-4 text-sm font-black uppercase tracking-widest text-white cta-primary"
-            style={{boxShadow:'6px 6px 0 #1e90ff', transition:'transform 0.2s, box-shadow 0.2s'}}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform='translateY(-3px)'; (e.currentTarget as HTMLElement).style.boxShadow='10px 10px 0 #1e90ff' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform=''; (e.currentTarget as HTMLElement).style.boxShadow='6px 6px 0 #1e90ff' }}>
+        {/* ── CTA ── */}
+        <div style={{ opacity: 0, animation: 'fadeUp 0.6s ease 1.5s forwards' }} className="mt-6">
+          <a
+            href="#contact"
+            className="cta-btn inline-block bg-[#0d1b5e] px-12 py-4 text-sm font-black uppercase tracking-widest text-white"
+            style={{ boxShadow: '6px 6px 0 #1e90ff', transition: 'transform 0.2s, box-shadow 0.2s' }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLElement
+              el.style.transform = 'translateY(-3px)'
+              el.style.boxShadow = '10px 10px 0 #1e90ff'
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLElement
+              el.style.transform = ''
+              el.style.boxShadow = '6px 6px 0 #1e90ff'
+            }}
+          >
             Get Started
-          </a>
-          <a href="#work" className="border-b-2 border-[#1e90ff]/30 pb-0.5 text-sm font-bold text-[#1e90ff] transition hover:border-[#1e90ff]">
-            See our work →
           </a>
         </div>
 
-        {/* Counters */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-8"
-          style={{opacity:0, animation:'fadeSlideUp 0.7s ease forwards 3.5s'}}>
+        {/* ── Stats ── */}
+        <div
+          className="mt-8 flex flex-wrap items-center justify-center gap-8"
+          style={{ opacity: 0, animation: 'fadeUp 0.6s ease 1.7s forwards' }}
+        >
           {[
             { ref: c1Ref, label: 'Projects Delivered' },
             { ref: c2Ref, label: 'Happy Clients' },
@@ -234,7 +262,7 @@ function HeroSection() {
               {i > 0 && <div className="h-10 w-px bg-[#0d1b5e]/10" />}
               <div className="text-center">
                 <span ref={item.ref} className="block text-2xl font-black text-[#0d1b5e]">
-                  0<span className="text-[#1e90ff]">{i === 2 ? '%' : '+'}</span>
+                  0<span style={{ color: '#1e90ff' }}>{i === 2 ? '%' : '+'}</span>
                 </span>
                 <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.18em] text-[#0d1b5e]/40">
                   {item.label}
@@ -244,14 +272,11 @@ function HeroSection() {
           ))}
         </div>
 
-        {/* Scroll hint */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-          style={{opacity:0, animation:'fadeSlideUp 0.5s ease forwards 3.8s'}}>
-          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#0d1b5e]/30">Scroll</span>
-          <div className="h-10 w-px" style={{background:'linear-gradient(to bottom, rgba(30,144,255,0.5), transparent)', animation:'scrollPulse 1.5s ease-in-out 4s infinite'}} />
-        </div>
+        {/* ── Scroll hint ── */}
+      
 
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
+        {/* Bottom fade */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
       </section>
     </>
   )

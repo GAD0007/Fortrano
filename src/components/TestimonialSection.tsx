@@ -1,4 +1,4 @@
-import { headingClass } from '../lib/styles'
+import { h3Class } from '../lib/styles'
 
 function TestimonialSection() {
   return (
@@ -37,7 +37,7 @@ function TestimonialSection() {
             <span className="text-[#1e90ff]">-</span>
             <span className="font-black text-white/60">Founder, BlueNova</span>
           </div>
-          <h3 className={`${headingClass} max-w-[920px] text-[clamp(1.65rem,3.6vw,3rem)] text-white`}>
+          <h3 className={`${h3Class} max-w-[920px] text-white`}>
             Fortrano made our brand feel premium, modern, and ready to scale
           </h3>
           <p className="mt-8 max-w-[880px] text-base font-semibold leading-relaxed text-white/70 sm:text-lg lg:text-xl">

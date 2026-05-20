@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { services } from '../data/siteData'
-import { headingClass } from '../lib/styles'
+import { h2Class, h3Class } from '../lib/styles'
 
 function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -55,22 +55,20 @@ function ServicesSection() {
       style={{ height: servicesScrollHeight }}
     >
       <div className="sticky top-0 h-[100svh] overflow-hidden">
-        <div className="grid grid-cols-1 gap-7 px-5 pb-8 pt-8 sm:px-8 sm:pb-10 sm:pt-12 md:grid-cols-2 md:gap-10 md:px-8 md:pb-16 md:pt-[70px] lg:px-14">
+        <div className="grid grid-cols-1 gap-7 px-5 pb-8 pt-20 sm:px-8 sm:pb-10 sm:pt-12 md:grid-cols-2 md:gap-10 md:px-8 md:pb-16 md:pt-[70px] lg:px-14">
           <div>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.35em] text-[#1e90ff]/70">Our services</p>
-            <h2 className={`${headingClass} text-[clamp(1.55rem,8vw,3.2rem)] text-white`}>
+            <h2 className={`${h2Class} text-white`}>
               Designed to <br />
               <span className="bg-gradient-to-r from-[#1e90ff] via-[#10b9e8] to-[#1e90ff] bg-clip-text text-transparent">
                 Push New Limits
               </span>
             </h2>
           </div>
-          <p className="max-w-[38rem] self-start text-[0.7rem] font-bold leading-tight text-white/70 sm:text-xs md:self-center md:text-xs md:font-normal md:leading-relaxed md:text-white/50 lg:text-sm">
-            Buyers start their journey online. Research shows your prospect is exploring two to seven websites before deciding to take their next action with you or with your competitors. A staggering 94% of their initial impressions and 75% of your credibility attributed to your brand stem from your website's design. While looks aren't everything, first impressions matter. And if you don't have a good one, it's hard to overcome.
-          </p>
+         
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 top-[330px] sm:top-[340px] md:top-[280px] lg:top-[250px]">
+        <div className="absolute inset-x-0 bottom-0 top-[260px] sm:top-[300px] md:top-[320px] lg:top-[360px] xl:top-[380px]">
           <div
             ref={trackRef}
             className="flex h-full w-max items-start gap-5 will-change-transform sm:gap-7"
@@ -83,7 +81,7 @@ function ServicesSection() {
                 <a
                   key={service.title.join('')}
                   href="#contact"
-                  className="group relative flex h-[78%] max-h-[390px] min-h-[260px] w-[235px] shrink-0 flex-col overflow-hidden sm:w-[315px] lg:w-[335px]"
+                  className="group relative flex h-[82%] max-h-[430px] min-h-[300px] w-[265px] shrink-0 flex-col overflow-hidden sm:w-[315px] lg:w-[335px]"
                   style={{ backgroundColor: service.color }}
                 >
                   <div className="flex flex-1 items-center justify-center px-5 pt-6 sm:px-6 sm:pt-8">
@@ -101,7 +99,7 @@ function ServicesSection() {
                     <div className="relative z-10 px-5 pb-6 pt-4 sm:px-6 sm:pb-8 sm:pt-5">
                       <div className="flex items-end justify-between gap-3">
                         <h3
-                          className={`${headingClass} text-[clamp(1.05rem,5.4vw,1.55rem)]`}
+                          className={h3Class}
                           style={{ color: isDark ? '#0d1b5e' : '#ffffff' }}
                         >
                           {service.title.map((line) => (

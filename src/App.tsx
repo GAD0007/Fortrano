@@ -9,6 +9,7 @@ import VideoSection from './components/VideoSection'
 import WorkSection from './components/WorkSection'
 
 function App() {
+
   return (
     <Layout>
       <>

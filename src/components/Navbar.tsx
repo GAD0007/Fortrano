@@ -1,18 +1,22 @@
 import { useState } from 'react'
 
 const navLinks = [
-  { label: 'Work', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Blog', href: '#insights' },
+  { label: 'Work', href: '#' },
+  { label: 'About', href: '#' },
+  { label: 'Services', href: '#' },
+  { label: 'Blog', href: '#' },
 ]
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <div className="relative z-20 bg-white">
-      <nav className="mx-auto flex max-w-[1230px] items-center justify-between px-5 py-6 sm:px-8 lg:px-10">
+    <div className="top-0 z-50 bg-white">
+      {/* Subtle gradient border line at the bottom of the navbar */}
+      <div className="absolute inset-x-0 bottom-0 h-[2px]"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(30,144,255,0.35) 30%, rgba(16,185,232,0.35) 70%, transparent)' }}
+      />
+      <nav className="mx-auto flex max-w-[1230px] items-center justify-between px-3 py-3 sm:px-4 lg:px-4">
         <a href="#" className="block w-[155px] sm:w-[210px]" aria-label="Fortrano Technology home">
           <img src="/IMG_9308.PNG" alt="Fortrano Technology" className="h-auto w-full object-contain" />
         </a>
@@ -75,17 +79,25 @@ function Navbar() {
           </button>
         </div>
 
-        <div className="mt-12 grid gap-5 text-4xl font-black uppercase leading-none text-[#0d1b5e]">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="border-b-[3px] border-[#0d1b5e]/20 pb-4 transition hover:text-[#1e90ff]"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+        <div className="mt-10 flex flex-col">
+          <p className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#0d1b5e]/50">
+            Navigation
+          </p>
+          <div className="flex flex-col">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="flex items-center justify-between border-b border-[#0d1b5e]/10 py-4 text-base font-semibold text-[#0d1b5e] transition hover:text-[#1e90ff]"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-30">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="mt-auto grid gap-5">
