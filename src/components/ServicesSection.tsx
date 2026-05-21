@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { services } from '../data/siteData'
 import { h2Class, h3Class } from '../lib/styles'
 
@@ -77,9 +78,9 @@ function ServicesSection() {
               const isDark = service.textColor === 'dark'
 
               return (
-                <a
+                <Link
                   key={service.title.join('')}
-                  href="#contact"
+                  to="/contact"
                   className="group relative flex h-[90%] max-h-[500px] min-h-[380px] w-[265px] shrink-0 flex-col overflow-hidden sm:w-[315px] lg:w-[335px]"
                   style={{ backgroundColor: service.color }}
                 >
@@ -131,7 +132,7 @@ function ServicesSection() {
                       </p>
                     </div>
                   </div>
-                </a>
+                </Link>
               )
             })}
           </div>
@@ -142,4 +143,3 @@ function ServicesSection() {
 }
 
 export default ServicesSection
-

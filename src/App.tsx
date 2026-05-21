@@ -1,27 +1,36 @@
-import AboutSection from './components/AboutSection'
-import ContactSection from './components/ContactSection'
-import HeroSection from './components/HeroSection'
 import Layout from './components/Layout'
-import NewsletterSection from './components/NewsletterSection'
-import ServicesSection from './components/ServicesSection'
-import TestimonialSection from './components/TestimonialSection'
-import VideoSection from './components/VideoSection'
-import WorkSection from './components/WorkSection'
+import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
+import HomePage from './pages/HomePage'
+
+function ScrollToLocation() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash)
+      element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [location])
+
+  return null
+}
 
 function App() {
-
   return (
     <Layout>
-      <>
-        <HeroSection />
-        <VideoSection />
-        <AboutSection />
-        <ServicesSection />
-        <WorkSection />
-        <TestimonialSection />
-        <NewsletterSection />
-        <ContactSection />
-      </>
+      <ScrollToLocation />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </Layout>
   )
 }

@@ -1,5 +1,6 @@
 import { footerSocialLinks } from '../data/siteData'
 import { headingClass } from '../lib/styles'
+import { Link } from 'react-router-dom'
 
 const aboutLinks = ['Team', 'Culture', 'Clients', 'Blog']
 const serviceLinks = [
@@ -17,9 +18,9 @@ function Footer() {
       <div className="mx-auto max-w-[1390px] px-5 pb-9 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 gap-10 rounded-t-none bg-white px-7 py-12 text-[#0d1b5e] sm:grid-cols-2 lg:grid-cols-[1.05fr_0.9fr_0.95fr_1.05fr_0.9fr] lg:gap-12 lg:px-12">
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#" className="block w-[200px]">
+            <Link to="/" className="block w-[200px]">
               <img src="/IMG_9308.PNG" alt="Fortrano Technology" className="h-auto w-full object-contain" />
-            </a>
+            </Link>
             <p className="mt-5 max-w-[230px] text-base font-bold leading-relaxed text-[#0d1b5e]/70">
               Full Service Design and Marketing Agency
             </p>
@@ -46,9 +47,9 @@ function Footer() {
             <h3 className={`${headingClass} mb-5 text-lg text-[#0d1b5e]`}>About</h3>
             <div className="grid gap-3 text-base font-bold text-[#0d1b5e]/80">
               {aboutLinks.map((link) => (
-                <a key={link} href="#about" className="transition hover:text-[#1e90ff]">
+                <Link key={link} to="/about" className="transition hover:text-[#1e90ff]">
                   {link}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -67,9 +68,9 @@ function Footer() {
           <div className="grid content-start gap-7">
             <div>
               <p className="mb-2 text-base font-bold text-[#0d1b5e]/70">Let's work together</p>
-              <a href="mailto:hello@fortranotech.com" className="group inline-flex items-center gap-4 border-b-2 border-[#0d1b5e]/20 pb-2 text-xl font-black uppercase text-[#0d1b5e]">
+              <Link to="/contact" className="group inline-flex items-center gap-4 border-b-2 border-[#0d1b5e]/20 pb-2 text-xl font-black uppercase text-[#0d1b5e]">
                 Get Started <span className="text-[#1e90ff] transition group-hover:translate-x-2">-&gt;</span>
-              </a>
+              </Link>
             </div>
             <div>
               <a href="mailto:hello@fortranotech.com?subject=Newsletter" className="group inline-flex items-center gap-4 border-b-2 border-[#0d1b5e]/20 pb-2 text-xl font-black uppercase text-[#0d1b5e]">
@@ -89,4 +90,3 @@ function Footer() {
 }
 
 export default Footer
-
