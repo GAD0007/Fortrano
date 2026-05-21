@@ -54,8 +54,8 @@ function ServicesSection() {
       className="relative bg-[#0b0f1e]"
       style={{ height: servicesScrollHeight }}
     >
-      <div className="sticky top-0 h-[100svh] overflow-hidden">
-        <div className="grid grid-cols-1 gap-7 px-5 pb-8 pt-20 sm:px-8 sm:pb-10 sm:pt-12 md:grid-cols-2 md:gap-10 md:px-8 md:pb-16 md:pt-[70px] lg:px-14">
+      <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden">
+        <div className="shrink-0 grid grid-cols-1 gap-7 px-5 pb-6 pt-16 sm:px-8 sm:pb-8 sm:pt-20 md:grid-cols-2 md:gap-10 md:px-8 md:pb-10 md:pt-24 lg:px-14">
           <div>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.35em] text-[#1e90ff]/70">Our services</p>
             <h2 className={`${h2Class} text-white`}>
@@ -65,13 +65,12 @@ function ServicesSection() {
               </span>
             </h2>
           </div>
-         
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 top-[260px] sm:top-[300px] md:top-[320px] lg:top-[360px] xl:top-[380px]">
+        <div className="relative flex-1 min-h-0 pb-10 sm:pb-14">
           <div
             ref={trackRef}
-            className="flex h-full w-max items-start gap-5 will-change-transform sm:gap-7"
+            className="flex h-full w-max items-center gap-5 px-5 will-change-transform sm:gap-7 sm:px-8 lg:px-14"
             style={{ transform: `translate3d(${servicesOffset}px, 0, 0)` }}
           >
             {services.map((service) => {
@@ -81,7 +80,7 @@ function ServicesSection() {
                 <a
                   key={service.title.join('')}
                   href="#contact"
-                  className="group relative flex h-[82%] max-h-[430px] min-h-[300px] w-[265px] shrink-0 flex-col overflow-hidden sm:w-[315px] lg:w-[335px]"
+                  className="group relative flex h-[90%] max-h-[500px] min-h-[380px] w-[265px] shrink-0 flex-col overflow-hidden sm:w-[315px] lg:w-[335px]"
                   style={{ backgroundColor: service.color }}
                 >
                   <div className="flex flex-1 items-center justify-center px-5 pt-6 sm:px-6 sm:pt-8">
@@ -90,7 +89,7 @@ function ServicesSection() {
                       alt={service.imgAlt}
                       width={service.imgW}
                       height={service.imgH}
-                      className="max-h-[105px] w-auto object-contain drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 sm:max-h-[150px]"
+                      className="max-h-[120px] w-auto object-contain drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 sm:max-h-[160px]"
                     />
                   </div>
 
