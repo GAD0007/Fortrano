@@ -5,7 +5,7 @@ const socialLinks = [
     label: 'LinkedIn',
     href: 'https://www.linkedin.com',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
         <rect x="2" y="9" width="4" height="12" />
         <circle cx="4" cy="4" r="2" />
@@ -16,7 +16,7 @@ const socialLinks = [
     label: 'Instagram',
     href: 'https://www.instagram.com',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -27,7 +27,7 @@ const socialLinks = [
     label: 'X',
     href: 'https://x.com',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4l16 16M4 20L20 4" />
       </svg>
     ),
@@ -36,51 +36,271 @@ const socialLinks = [
     label: 'Facebook',
     href: 'https://www.facebook.com',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
       </svg>
     ),
   },
 ]
 
-const inputClass =
-  'w-full border-b-2 border-[#0d1b5e]/20 bg-transparent px-0 py-4 text-lg font-medium text-[#0d1b5e] outline-none transition-all placeholder:text-[#0d1b5e]/40 focus:border-[#1e90ff]'
+const css = `
+  .ct-root {
+    background-color: #f5f7fc;
+    background-image: radial-gradient(rgba(13,27,94,0.07) 1px, transparent 1px);
+    background-size: 26px 26px;
+    color: #0d1b5e;
+    overflow-x: hidden;
+  }
+
+  .ct-inner {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .ct-inner { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px 80px; }
+  }
+
+  /* ── Left col ── */
+  .ct-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #1e90ff;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: ct-up 0.6s 0.05s forwards;
+  }
+  .ct-eyebrow::before {
+    content: '';
+    width: 30px; height: 2px;
+    background: #1e90ff;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .ct-heading {
+    opacity: 0;
+    animation: ct-up 0.7s 0.15s forwards;
+    margin-bottom: 20px;
+  }
+
+  .ct-sub {
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.78;
+    color: rgba(13,27,94,0.60);
+    max-width: 480px;
+    opacity: 0;
+    animation: ct-up 0.7s 0.25s forwards;
+  }
+
+  .ct-contact-links {
+    margin-top: 44px;
+    display: grid;
+    gap: 14px;
+    opacity: 0;
+    animation: ct-up 0.7s 0.35s forwards;
+  }
+
+  .ct-contact-link {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0d1b5e;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .ct-contact-link:hover { color: #1e90ff; }
+
+  .ct-location {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(13,27,94,0.50);
+  }
+
+  .ct-socials {
+    margin-top: 48px;
+    opacity: 0;
+    animation: ct-up 0.7s 0.45s forwards;
+  }
+  .ct-socials-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(13,27,94,0.38);
+    margin-bottom: 18px;
+  }
+  .ct-socials-row {
+    display: flex;
+    gap: 20px;
+  }
+  .ct-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1.5px solid rgba(13,27,94,0.09);
+    color: #0d1b5e;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .ct-social-link:hover {
+    background: #1e90ff;
+    color: #fff;
+    border-color: #1e90ff;
+    transform: translateY(-2px);
+  }
+
+  /* ── Form card ── */
+  .ct-form-wrap {
+    opacity: 0;
+    animation: ct-left 0.8s 0.35s forwards;
+  }
+
+  .ct-form-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 48px 48px;
+    box-shadow: 0 6px 40px rgba(13,27,94,0.09), 0 1px 0 rgba(13,27,94,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .ct-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #1e90ff 0%, #0d1b5e 100%);
+    border-radius: 20px 20px 0 0;
+  }
+  @media (max-width: 600px) { .ct-form-card { padding: 36px 28px; } }
+
+  .ct-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 600px) { .ct-field-row { grid-template-columns: 1fr; } }
+
+  .ct-field { margin-bottom: 32px; }
+  .ct-field:last-of-type { margin-bottom: 0; }
+
+  .ct-label {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(13,27,94,0.40);
+    margin-bottom: 10px;
+  }
+
+  .ct-input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid rgba(13,27,94,0.14);
+    background: transparent;
+    padding: 10px 0 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #0d1b5e;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .ct-input::placeholder { color: rgba(13,27,94,0.30); }
+  .ct-input:focus { border-color: #1e90ff; }
+
+  .ct-textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .ct-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0d1b5e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 17px 34px;
+    border-radius: 100px;
+    margin-top: 36px;
+    transition: background 0.22s, transform 0.2s, box-shadow 0.22s;
+  }
+  .ct-submit:hover {
+    background: #1e90ff;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(30,144,255,0.26);
+  }
+  .ct-submit svg { transition: transform 0.2s; }
+  .ct-submit:hover svg { transform: translateX(4px); }
+
+  /* ── Keyframes ── */
+  @keyframes ct-up {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ct-left {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+`
 
 function ContactPage() {
   return (
-    <section className="bg-white text-[#0d1b5e]">
-      <div className="mx-auto grid max-w-[1230px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-4 lg:py-24">
+    <div className="ct-root">
+      <style>{css}</style>
+
+      <div className="ct-inner">
+        {/* ── Left col ── */}
         <div>
-          <p className="mb-5 text-xs font-black uppercase tracking-[0.35em] text-[#1e90ff]">
-            Contact us
-          </p>
-          <h1 className={`${h2Class} max-w-[720px]`}>
+          <div className="ct-eyebrow">Contact us</div>
+
+          <h1 className={`${h2Class} ct-heading`}>
             Let's Build What Comes Next
           </h1>
-          <p className="mt-6 max-w-[560px] text-lg font-medium leading-relaxed text-[#0d1b5e]/70">
+
+          <p className="ct-sub">
             Tell us what you are planning, what you need help with, or where your brand needs to go next.
           </p>
 
-          <div className="mt-12 grid gap-5 text-lg font-semibold text-[#0d1b5e]">
-            <a href="mailto:hello@fortranotech.com" className="transition hover:text-[#1e90ff]">
+          <div className="ct-contact-links">
+            <a href="mailto:hello@fortranotech.com" className="ct-contact-link">
               hello@fortranotech.com
             </a>
-            <a href="tel:+2340000000000" className="transition hover:text-[#1e90ff]">
+            <a href="tel:+2340000000000" className="ct-contact-link">
               +234 000 000 0000
             </a>
-            <p className="text-[#0d1b5e]/70">Lagos, Nigeria · Remote Worldwide</p>
+            <p className="ct-location">Lagos, Nigeria · Remote Worldwide</p>
           </div>
 
-          <div className="mt-14">
-            <h2 className="mb-6 text-sm font-black uppercase tracking-[0.2em] text-[#0d1b5e]/40">Connect</h2>
-            <div className="flex gap-6">
+          <div className="ct-socials">
+            <div className="ct-socials-label">Connect</div>
+            <div className="ct-socials-row">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-[#0d1b5e] transition-colors hover:text-[#1e90ff]"
+                  className="ct-social-link"
                   aria-label={link.label}
                 >
                   {link.icon}
@@ -90,48 +310,42 @@ function ContactPage() {
           </div>
         </div>
 
-        <form
-          action="mailto:hello@fortranotech.com"
-          method="post"
-          encType="text/plain"
-          className="rounded-3xl bg-[#f4f7fb] p-8 shadow-xl shadow-[#0d1b5e]/5 sm:p-12 lg:ml-10"
-        >
-          <div className="grid gap-8">
-            <div className="grid gap-8 sm:grid-cols-2">
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.15em] text-[#0d1b5e]/60">Name</span>
-                <input className={inputClass} name="name" type="text" placeholder="Your name" required />
+        {/* ── Form card ── */}
+        <div className="ct-form-wrap">
+          <div className="ct-form-card">
+            <div className="ct-field-row">
+              <label>
+                <span className="ct-label">Name</span>
+                <input className="ct-input" name="name" type="text" placeholder="Your name" required />
               </label>
-              <label className="block">
-                <span className="text-xs font-black uppercase tracking-[0.15em] text-[#0d1b5e]/60">Email</span>
-                <input className={inputClass} name="email" type="email" placeholder="you@example.com" required />
+              <label>
+                <span className="ct-label">Email</span>
+                <input className="ct-input" name="email" type="email" placeholder="you@example.com" required />
               </label>
             </div>
 
-            <label className="block">
-              <span className="text-xs font-black uppercase tracking-[0.15em] text-[#0d1b5e]/60">Message</span>
-              <textarea
-                className={`${inputClass} min-h-[160px] resize-y`}
-                name="message"
-                placeholder="Tell us about the project"
-                required
-              />
-            </label>
+            <div className="ct-field">
+              <label>
+                <span className="ct-label">Message</span>
+                <textarea
+                  className="ct-input ct-textarea"
+                  name="message"
+                  placeholder="Tell us about the project"
+                  required
+                />
+              </label>
+            </div>
 
-            <button
-              type="submit"
-              className="mt-6 inline-flex w-max items-center gap-4 rounded-full bg-[#1e90ff] px-10 py-5 text-sm font-black uppercase tracking-[0.1em] text-white transition-all hover:-translate-y-1 hover:bg-[#0d1b5e] hover:shadow-lg hover:shadow-[#0d1b5e]/20"
-            >
+            <button type="submit" className="ct-submit">
               Send Message
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
+              <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.4" viewBox="0 0 24 24">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
           </div>
-        </form>
+        </div>
       </div>
-    </section>
+    </div>
   )
 }
 

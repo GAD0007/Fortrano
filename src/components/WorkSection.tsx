@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { workColumns } from '../data/siteData'
 import { headingClass, h2Class } from '../lib/styles'
 
-function WorkSection() {
+type WorkSectionProps = {
+  showIntro?: boolean
+}
+
+function WorkSection({ showIntro = true }: WorkSectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const [workProgress, setWorkProgress] = useState(0)
   const [isWorkParallaxEnabled, setIsWorkParallaxEnabled] = useState(false)
@@ -48,35 +53,40 @@ function WorkSection() {
 
   return (
     <section id="work" ref={sectionRef} className="overflow-hidden bg-white text-[#0d1b5e]">
-      <div className="mx-auto grid max-w-[1230px] gap-8 px-5 pb-10 pt-14 sm:px-8 sm:pb-14 sm:pt-20 md:gap-12 md:pb-20 md:pt-28 lg:grid-cols-2 lg:px-10 lg:pb-28 lg:pt-40">
-        <div>
-          <p className="mb-5 text-xs font-black uppercase tracking-[0.48em] text-[#1e90ff]">Who we are</p>
-          <h2 className={`${h2Class} text-[#0d1b5e]`}>
-            Beauty may be
-            <br />
-            skin deep - but
-            <br />
-            your brand goes
-            <br />
-            <span className="bg-gradient-to-r from-[#7dd3fc] via-[#38bdf8] to-[#bae6fd] bg-[length:100%_0.42em] bg-bottom bg-no-repeat">
-              clean to the bone.
-            </span>
-          </h2>
+      {showIntro && (
+        <div className="mx-auto grid max-w-[1230px] gap-8 px-5 pb-10 pt-14 sm:px-8 sm:pb-14 sm:pt-20 md:gap-12 md:pb-20 md:pt-28 lg:grid-cols-2 lg:px-10 lg:pb-28 lg:pt-40">
+          <div>
+            <p className="mb-5 text-xs font-black uppercase tracking-[0.48em] text-[#1e90ff]">Who we are</p>
+            <h2 className={`${h2Class} text-[#0d1b5e]`}>
+              Beauty may be
+              <br />
+              skin deep - but
+              <br />
+              your brand goes
+              <br />
+              <span className="bg-gradient-to-r from-[#7dd3fc] via-[#38bdf8] to-[#bae6fd] bg-[length:100%_0.42em] bg-bottom bg-no-repeat">
+                clean to the bone.
+              </span>
+            </h2>
+          </div>
+          <div className="self-end">
+            <p className="max-w-[650px] text-xl font-semibold leading-[1.45] text-[#0d1b5e]/80 sm:text-2xl">
+              We are a brand-first agency, emphasizing the importance of creating a consistent and memorable brand experience for customers. This means aligning all aspects of a business, from products and services to marketing and customer interactions, with the core values and identity of the brand.
+            </p>
+            <Link
+              to="/work"
+              className="mt-7 inline-flex bg-[#1e90ff] px-12 py-4 text-sm font-black uppercase text-white shadow-[7px_7px_0_#0d1b5e] transition hover:-translate-y-1 hover:shadow-[10px_10px_0_#0d1b5e]"
+            >
+              Our Work
+            </Link>
+          </div>
         </div>
-        <div className="self-end">
-          <p className="max-w-[650px] text-xl font-semibold leading-[1.45] text-[#0d1b5e]/80 sm:text-2xl">
-            We are a brand-first agency, emphasizing the importance of creating a consistent and memorable brand experience for customers. This means aligning all aspects of a business, from products and services to marketing and customer interactions, with the core values and identity of the brand.
-          </p>
-          <a
-            href="#work"
-            className="mt-7 inline-flex bg-[#1e90ff] px-12 py-4 text-sm font-black uppercase text-white shadow-[7px_7px_0_#0d1b5e] transition hover:-translate-y-1 hover:shadow-[10px_10px_0_#0d1b5e]"
-          >
-            Our Work
-          </a>
-        </div>
-      </div>
+      )}
 
-      <div className="mx-auto max-w-[1600px] px-5 pb-8 pt-8 sm:pb-14 sm:pt-12 md:pb-32 md:pt-20" style={{ marginBottom: '60px' }}>
+      <div
+        className={`mx-auto max-w-[1600px] px-5 pb-8 sm:pb-14 md:pb-32 ${showIntro ? 'pt-8 sm:pt-12 md:pt-20' : 'pt-0'}`}
+        style={{ marginBottom: '60px' }}
+      >
         <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 md:grid-cols-3 md:items-start">
           {workColumns.map((column, columnIndex) => {
             const isMiddle = columnIndex === 1
@@ -92,7 +102,7 @@ function WorkSection() {
                   const innerOffset = (isMiddle ? imageOffset : -imageOffset) + itemIndex * 4
 
                   return (
-                    <a key={item.title} href="#contact" className="group block text-[#0d1b5e]">
+                    <Link key={item.title} to="/contact" className="group block text-[#0d1b5e]">
                       <div className="aspect-square overflow-hidden bg-[#f4f7fb]">
                         <div
                           className="h-[112%] w-full will-change-transform"
@@ -110,7 +120,7 @@ function WorkSection() {
                         <h3 className={`${headingClass} text-lg text-[#0d1b5e]`}>{item.title}</h3>
                         <p className="text-right text-base font-bold normal-case text-[#1e90ff]">{item.category}</p>
                       </div>
-                    </a>
+                    </Link>
                   )
                 })}
               </div>
@@ -123,4 +133,3 @@ function WorkSection() {
 }
 
 export default WorkSection
-

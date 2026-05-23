@@ -1,15 +1,12 @@
-import { footerSocialLinks } from '../data/siteData'
+import { footerSocialLinks, services } from '../data/siteData'
 import { headingClass } from '../lib/styles'
 import { Link } from 'react-router-dom'
 
-const aboutLinks = ['Team', 'Culture', 'Clients', 'Blog']
-const serviceLinks = [
-  'Brand and Visual Identity',
-  'Marketing Strategy',
-  'UI/UX Design',
-  'Content and Messaging',
-  'Website Development',
-  'Social Media',
+const aboutLinks = [
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Contact us', to: '/contact' },
+  { label: 'Work', to: '/work' },
 ]
 
 function Footer() {
@@ -47,8 +44,8 @@ function Footer() {
             <h3 className={`${headingClass} mb-5 text-lg text-[#0d1b5e]`}>About</h3>
             <div className="grid gap-3 text-base font-bold text-[#0d1b5e]/80">
               {aboutLinks.map((link) => (
-                <Link key={link} to="/about" className="transition hover:text-[#1e90ff]">
-                  {link}
+                <Link key={link.label} to={link.to} className="transition hover:text-[#1e90ff]">
+                  {link.label}
                 </Link>
               ))}
             </div>
@@ -57,10 +54,10 @@ function Footer() {
           <div>
             <h3 className={`${headingClass} mb-5 text-lg text-[#0d1b5e]`}>Services</h3>
             <div className="grid gap-3 text-base font-bold text-[#0d1b5e]/80">
-              {serviceLinks.map((link) => (
-                <a key={link} href="#services" className="transition hover:text-[#1e90ff]">
-                  {link}
-                </a>
+              {services.map((service) => (
+                <Link key={service.href} to={service.href} className="transition hover:text-[#1e90ff]">
+                  {service.title.join(' ')}
+                </Link>
               ))}
             </div>
           </div>

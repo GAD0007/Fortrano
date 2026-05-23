@@ -4,6 +4,9 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
+import ServicePage from './pages/ServicePage'
+import ServicesPage from './pages/ServicesPage'
+import WorkPage from './pages/WorkPage'
 
 function ScrollToLocation() {
   const location = useLocation()
@@ -27,8 +30,11 @@ function App() {
       <ScrollToLocation />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/work" element={<WorkPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/:serviceSlug" element={<ServicePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

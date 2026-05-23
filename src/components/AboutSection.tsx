@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { h2Class } from '../lib/styles'
 
 function AboutSection() {
@@ -17,12 +18,12 @@ function AboutSection() {
           <p className="text-xl font-semibold leading-[1.45] text-[#0d1b5e]/80 sm:text-2xl">
             When your client-facing materials and communication aren't following an aligned strategy, the inconsistency becomes evident to everyone. If you're eager to grow and secure a steady stream of leads with a unified approach, we might be the right fit for you.
           </p>
-          <a
-            href="#work"
+          <Link
+            to="/work"
             className="mt-7 inline-flex bg-[#1e90ff] px-12 py-4 text-sm font-black uppercase text-white shadow-[7px_7px_0_#0d1b5e] transition hover:-translate-y-1 hover:shadow-[10px_10px_0_#0d1b5e]"
           >
             Our Work
-          </a>
+          </Link>
         </div>
       </div>
     </section>
@@ -30,4 +31,3 @@ function AboutSection() {
 }
 
 export default AboutSection
-

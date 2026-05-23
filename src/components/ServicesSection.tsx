@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { services } from '../data/siteData'
-import { h2Class, h3Class } from '../lib/styles'
+import { h2Class } from '../lib/styles'
 
 function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -76,14 +76,16 @@ function ServicesSection() {
           >
             {services.map((service) => {
               const isDark = service.textColor === 'dark'
+              const textColor = isDark ? '#0d1b5e' : '#ffffff'
 
               return (
                 <Link
                   key={service.title.join('')}
-                  to="/contact"
-                  className="group relative flex h-[90%] max-h-[500px] min-h-[380px] w-[265px] shrink-0 flex-col overflow-hidden sm:w-[315px] lg:w-[335px]"
+                  to={service.href}
+                  className="group relative flex h-[90%] min-h-[420px] w-[280px] shrink-0 flex-col overflow-hidden sm:w-[340px] lg:w-[380px]"
                   style={{ backgroundColor: service.color }}
                 >
+                  {/* Image */}
                   <div className="flex flex-1 items-center justify-center px-5 pt-6 sm:px-6 sm:pt-8">
                     <img
                       src={service.imgSrc}
@@ -94,13 +96,21 @@ function ServicesSection() {
                     />
                   </div>
 
-                  <div className="relative overflow-hidden">
-                    <div className={`absolute inset-x-0 bottom-0 h-0 transition-all duration-500 ease-in-out group-hover:h-full ${isDark ? 'bg-white/20' : 'bg-black/25'}`} />
+                  {/* Bottom content */}
+                  <div className="relative">
+                    <div
+                      className={`absolute inset-x-0 bottom-0 h-0 transition-all duration-500 ease-in-out group-hover:h-full ${isDark ? 'bg-white/20' : 'bg-black/25'}`}
+                    />
                     <div className="relative z-10 px-5 pb-6 pt-4 sm:px-6 sm:pb-8 sm:pt-5">
-                      <div className="flex items-end justify-between gap-3">
+                      {/* Title row — title shrinks, arrow never drops off */}
+                      <div className="flex items-end justify-between gap-4">
                         <h3
-                          className={h3Class}
-                          style={{ color: isDark ? '#0d1b5e' : '#ffffff' }}
+                          className="font-black uppercase leading-tight"
+                          style={{
+                            color: textColor,
+                            fontSize: 'clamp(1rem, 2.2vw, 1.35rem)',
+                            letterSpacing: '0.02em',
+                          }}
                         >
                           {service.title.map((line) => (
                             <span key={line} className="block">
@@ -117,16 +127,18 @@ function ServicesSection() {
                         >
                           <path
                             d="M0 9H31M31 9L23 1M31 9L23 17"
-                            stroke={isDark ? '#0d1b5e' : '#ffffff'}
+                            stroke={textColor}
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
                         </svg>
                       </div>
+
+                      {/* Description — hover reveal */}
                       <p
-                        className="mt-3 line-clamp-3 max-h-0 overflow-hidden text-sm font-normal leading-snug opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100"
-                        style={{ color: isDark ? '#0d1b5e' : '#ffffff' }}
+                        className="mt-3 max-h-0 overflow-hidden text-sm font-normal leading-snug opacity-0 transition-all duration-500 group-hover:max-h-32 group-hover:opacity-100"
+                        style={{ color: textColor }}
                       >
                         {service.description}
                       </p>

@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const navLinks = [
-  { label: 'Work', href: '/#work' },
+  { label: 'Work', href: '/work', isRoute: true },
   { label: 'About', href: '/about', isRoute: true },
-  { label: 'Services', href: '/#services' },
+  { label: 'Services', href: '/services', isRoute: true },
   { label: 'Contact us', href: '/contact', isRoute: true },
 ]
 
@@ -23,15 +23,15 @@ function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-12 text-lg font-black uppercase text-[#0d1b5e] md:flex">
-          <a href="/#work" className="transition hover:text-[#1e90ff]">
+          <Link to="/work" className="transition hover:text-[#1e90ff]">
             Work
-          </a>
+          </Link>
           <Link to="/about" className="transition hover:text-[#1e90ff]">
             About
           </Link>
-          <a href="/#services" className="transition hover:text-[#1e90ff]">
+          <Link to="/services" className="transition hover:text-[#1e90ff]">
             Services
-          </a>
+          </Link>
           <Link to="/contact" className="transition hover:text-[#1e90ff]">
             Contact us
           </Link>
