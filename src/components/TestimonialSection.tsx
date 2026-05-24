@@ -18,7 +18,7 @@ function TestimonialSection() {
         &rsaquo;
       </button>
 
-      <div className="mx-auto grid min-h-[680px] max-w-[1390px] items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:px-16 lg:py-28">
+      <div className="mx-auto grid min-h-[680px] max-w-[1390px] items-center gap-12 px-5 pb-10 pt-20 sm:px-8 sm:pb-14 lg:grid-cols-[0.72fr_1.28fr] lg:px-16 lg:pb-16 lg:pt-28">
         <div className="relative mx-auto w-full max-w-[360px] lg:mx-0">
           <span className="absolute -left-10 -top-24 text-[13rem] font-black leading-none text-[#1e90ff]">"</span>
           <div className="relative border-[10px] border-[#1e90ff] bg-white shadow-[14px_14px_0_rgba(30,144,255,0.25)]">
@@ -40,7 +40,7 @@ function TestimonialSection() {
           <h3 className={`${h3Class} max-w-[920px] text-white`}>
             Fortrano made our brand feel premium, modern, and ready to scale
           </h3>
-          <p className="mt-8 max-w-[880px] text-base font-semibold leading-relaxed text-white/70 sm:text-lg lg:text-xl">
+          <p className="mt-8 max-w-[540px] text-base font-semibold leading-relaxed text-white/70 sm:text-lg">
             We needed a partner who could sharpen our brand, improve the website experience, and keep the launch moving. The Fortrano team brought structure, taste, and speed to the whole process. Everything finally felt aligned, confident, and built for growth.
           </p>
         </blockquote>
@@ -50,4 +50,3 @@ function TestimonialSection() {
 }
 
 export default TestimonialSection
-

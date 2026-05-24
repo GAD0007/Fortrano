@@ -116,24 +116,22 @@ const css = `
 .sv-hero-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  padding: 18px 42px;
-  border-radius: 100px;
-  font-size: 0.8rem;
+  padding: 1rem 3rem;
+  font-size: 0.875rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   color: #fff;
+  background: #0d1b5e;
   text-decoration: none;
-  border: 1.5px solid rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 6px 6px 0 #1e90ff;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 .sv-hero-cta:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(16,185,232,0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(16,185,232,0.12);
+  transform: translateY(-3px);
+  box-shadow: 10px 10px 0 #1e90ff;
 }
 .sv-hero-cta svg { transition: transform 0.3s ease; }
 .sv-hero-cta:hover svg { transform: translateX(5px); }
@@ -346,28 +344,34 @@ const css = `
 .sv-explore-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 11px;
+  justify-content: center;
+  gap: 12px;
+  width: max-content;
+  background: #0d1b5e;
+  color: #fff !important;
+  padding: 1rem 3rem;
+  font-size: 0.875rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.1em;
   text-decoration: none;
-  transition: gap 0.3s ease;
+  box-shadow: 6px 6px 0 #1e90ff;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.sv-explore-link:hover { gap: 17px; }
+.sv-explore-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 10px 10px 0 #1e90ff;
+}
 .sv-explore-arrow {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  border: 1.5px solid currentColor;
+  width: auto; height: auto;
+  border: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  transition: transform 0.2s;
   flex-shrink: 0;
 }
 .sv-explore-link:hover .sv-explore-arrow {
-  transform: rotate(45deg);
-  background: currentColor;
-  color: #06080f;
+  transform: translateX(4px);
 }
 
 /* ── FOOTER CTA ── */
@@ -417,21 +421,22 @@ const css = `
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 20px 48px;
-  border-radius: 100px;
-  font-size: 0.82rem;
+  justify-content: center;
+  gap: 12px;
+  padding: 1rem 3rem;
+  font-size: 0.875rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: #06080f;
-  background: #fff;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: #0d1b5e;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 6px 6px 0 #1e90ff;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 .sv-footer-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 44px rgba(255,255,255,0.09);
+  transform: translateY(-3px);
+  box-shadow: 10px 10px 0 #1e90ff;
 }
 .sv-footer-btn svg { transition: transform 0.3s ease; }
 .sv-footer-btn:hover svg { transform: translateX(5px); }

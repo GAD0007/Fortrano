@@ -149,6 +149,15 @@ function HeroSection() {
           animation: shimmer 3.2s ease 2s infinite;
         }
 
+        .hero-headline-line {
+          font-size: clamp(2.45rem, 10vw, 6.5rem);
+        }
+        @media (min-width: 640px) {
+          .hero-headline-line {
+            font-size: clamp(3rem, 10vw, 6.5rem);
+          }
+        }
+
         /* ── Scroll hint ───────────────────────────────────────── */
         @keyframes scrollPulse {
           0%,100% { opacity: 0.3; }
@@ -200,13 +209,13 @@ function HeroSection() {
           */}
 
           {/* Line 1: WHERE BRANDS */}
-          <div className="text-[clamp(3rem,10vw,6.5rem)] font-black uppercase leading-[0.95] tracking-[-0.02em] text-[#0d1b5e]">
+          <div className="hero-headline-line whitespace-nowrap font-black uppercase leading-[0.95] tracking-[-0.02em] text-[#0d1b5e]">
             <span className="word-mask w1"><span className="word-inner">WHERE&nbsp;</span></span>
             <span className="word-mask w2"><span className="word-inner">BRANDS</span></span>
           </div>
 
           {/* Line 2: GET THEIR EDGE */}
-          <div className="text-[clamp(3rem,10vw,6.5rem)] font-black uppercase leading-[0.95] tracking-[-0.02em]">
+          <div className="hero-headline-line whitespace-nowrap font-black uppercase leading-[0.95] tracking-[-0.02em]">
             <span className="word-mask w3"><span className="word-inner text-[#0d1b5e]">GET&nbsp;</span></span>
             <span className="word-mask w4"><span className="word-inner grad-their">THEIR&nbsp;</span></span>
             <span className="word-mask w5"><span className="word-inner glow-edge">EDGE</span></span>

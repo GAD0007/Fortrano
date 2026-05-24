@@ -123,19 +123,20 @@ export const services = [
 
 export const workColumns = [
   [
-    { title: 'Singing Tiger', category: 'Brand', image: 'animo4.png', alt: 'Singing Tiger brand work' },
-    { title: 'Cafe Levantine', category: 'Brand', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671134d6967967172dd3eded_new%201.png', alt: 'Cafe Levantine brand work' },
-    { title: 'Cadre', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671134d60e4cdd34e3281e1c_Subway%20Poster%20Mockup1%202%201.png', alt: 'Cadre brand work' },
+    { title: 'Craigwal', category: 'Website', image: '/Screenshot (468).png', alt: 'Craigwal', href: 'https://craigwalpetroshore.com/' },
+    { title: 'Switch', category: 'Website', image: '/Screenshot (473).png', alt: 'Switch', href: '/contact' },
   ],
   [
-    { title: 'Arthur Brooks', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671135405388873aee2c993e_ACBLOGO_3%202.webp', alt: 'Arthur Brooks brand work' },
-    { title: 'I10 Wealth Management', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671134d63ac264346e0381f4_Free_Landscape_Brochure_Mockup_06%202.png', alt: 'I10 Wealth Management brand work' },
-    { title: 'Main Event Caterers', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671134d6cb5f1808ece79ca8_maineventmockup%202.png', alt: 'Main Event Caterers website work' },
+    // { title: 'Arthur Brooks', category: 'UI/UX', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671135405388873aee2c993e_ACBLOGO_3%202.webp', alt: 'Arthur Brooks brand work', href: '/contact' },
+    { title: 'PCU', category: 'Website', image: '/Screenshot (470).png', alt: 'Precious Cornerstone University website', href: 'https://pcu-edu-ng.vercel.app/' },
+    { title: 'Penaid', category: 'Visual Identity', image: '/Screenshot (477).png', alt: 'Penaid', href: 'https://www.behance.net/gallery/245555343/Penaid' },
   ],
   [
-    { title: 'Rossen Landscape', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671135409b81cf89e90ff2a8_bcrossen%201.webp', alt: 'Rossen Landscape brand work' },
-    { title: 'Dignity USA', category: 'Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671134d63bfd7ed697246bb7_Group%2048096615.png', alt: 'Dignity USA website work' },
-    { title: 'Milkify', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/67242f659abe42af574a74b3_Group%2048095602.svg', alt: 'Milkify brand work' },
+    { title: 'KFC', category: 'Graphics', image: '/Screenshot (475).png', alt: 'KFC', href: 'https://www.behance.net/gallery/245529715/KFC-Social-Media' },
+
+    // { title: 'Rossen Landscape', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671135409b81cf89e90ff2a8_bcrossen%201.webp', alt: 'Rossen Landscape brand work', href: '/contact' },
+    { title: 'Redella', category: 'Website', image: '/Screenshot (469).png', alt: 'Redell website', href: 'https://consultancysite.vercel.app/' },
+    // { title: 'Milkify', category: 'Brand & Website', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/67242f659abe42af574a74b3_Group%2048095602.svg', alt: 'Milkify brand work', href: '/contact' },
   ],
 ] as const
 

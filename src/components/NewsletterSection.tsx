@@ -1,4 +1,4 @@
-import { h2Class } from '../lib/styles'
+import { ctaButtonClass, h2Class } from '../lib/styles'
 
 function NewsletterSection() {
   return (
@@ -31,7 +31,7 @@ function NewsletterSection() {
           <div className="flex justify-end">
             <button
               type="button"
-              className="bg-white px-10 py-4 text-base font-black uppercase text-[#0d1b5e] shadow-[6px_6px_0_rgba(0,0,0,0.2)] transition hover:-translate-y-1 hover:bg-[#0d1b5e] hover:text-white hover:shadow-[8px_8px_0_rgba(0,0,0,0.2)]"
+              className={ctaButtonClass}
             >
               Submit
             </button>
@@ -43,4 +43,3 @@ function NewsletterSection() {
 }
 
 export default NewsletterSection
-

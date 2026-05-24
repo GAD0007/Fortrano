@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { workColumns } from '../data/siteData'
-import { headingClass, h2Class } from '../lib/styles'
+import { ctaButtonClass, headingClass, h2Class } from '../lib/styles'
 
 type WorkSectionProps = {
   showIntro?: boolean
@@ -49,12 +49,45 @@ function WorkSection({ showIntro = true }: WorkSectionProps) {
 
   const sideColumnOffset = isWorkParallaxEnabled ? 120 - workProgress * 210 : 0
   const middleColumnOffset = isWorkParallaxEnabled ? -170 + workProgress * 340 : 0
-  const imageOffset = isWorkParallaxEnabled ? -24 + workProgress * 48 : 0
+
+  const renderWorkItem = (item: (typeof workColumns)[number][number]) => {
+    const isExternal = /^https?:\/\//.test(item.href)
+    const content = (
+      <>
+        <div className="overflow-hidden bg-[#f4f7fb]">
+          <img
+            src={item.image}
+            alt={item.alt}
+            loading="lazy"
+            className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
+        <div className="mt-3 flex items-start justify-between gap-4">
+          <h3 className={`${headingClass} text-lg text-[#0d1b5e]`}>{item.title}</h3>
+          <p className="text-right text-base font-bold normal-case text-[#1e90ff]">{item.category}</p>
+        </div>
+      </>
+    )
+
+    if (isExternal) {
+      return (
+        <a key={item.title} href={item.href} target="_blank" rel="noreferrer" className="group block text-[#0d1b5e]">
+          {content}
+        </a>
+      )
+    }
+
+    return (
+      <Link key={item.title} to={item.href} className="group block text-[#0d1b5e]">
+        {content}
+      </Link>
+    )
+  }
 
   return (
     <section id="work" ref={sectionRef} className="overflow-hidden bg-white text-[#0d1b5e]">
       {showIntro && (
-        <div className="mx-auto grid max-w-[1230px] gap-8 px-5 pb-10 pt-14 sm:px-8 sm:pb-14 sm:pt-20 md:gap-12 md:pb-20 md:pt-28 lg:grid-cols-2 lg:px-10 lg:pb-28 lg:pt-40">
+        <div className="mx-auto grid max-w-[1230px] gap-8 px-5 py-12 sm:px-8 sm:py-14 md:gap-12 md:py-16 lg:grid-cols-2 lg:px-10 lg:py-20">
           <div>
             <p className="mb-5 text-xs font-black uppercase tracking-[0.48em] text-[#1e90ff]">Who we are</p>
             <h2 className={`${h2Class} text-[#0d1b5e]`}>
@@ -70,13 +103,10 @@ function WorkSection({ showIntro = true }: WorkSectionProps) {
             </h2>
           </div>
           <div className="self-end">
-            <p className="max-w-[650px] text-xl font-semibold leading-[1.45] text-[#0d1b5e]/80 sm:text-2xl">
+            <p className="max-w-[540px] text-base font-semibold leading-relaxed text-[#0d1b5e]/80 sm:text-lg">
               We are a brand-first agency, emphasizing the importance of creating a consistent and memorable brand experience for customers. This means aligning all aspects of a business, from products and services to marketing and customer interactions, with the core values and identity of the brand.
             </p>
-            <Link
-              to="/work"
-              className="mt-7 inline-flex bg-[#1e90ff] px-12 py-4 text-sm font-black uppercase text-white shadow-[7px_7px_0_#0d1b5e] transition hover:-translate-y-1 hover:shadow-[10px_10px_0_#0d1b5e]"
-            >
+            <Link to="/work" className={`mt-7 ${ctaButtonClass}`}>
               Our Work
             </Link>
           </div>
@@ -98,31 +128,7 @@ function WorkSection({ showIntro = true }: WorkSectionProps) {
                 className="grid gap-10 will-change-transform md:gap-12"
                 style={{ transform: `translate3d(0, ${columnOffset}px, 0)` }}
               >
-                {column.map((item, itemIndex) => {
-                  const innerOffset = (isMiddle ? imageOffset : -imageOffset) + itemIndex * 4
-
-                  return (
-                    <Link key={item.title} to="/contact" className="group block text-[#0d1b5e]">
-                      <div className="aspect-square overflow-hidden bg-[#f4f7fb]">
-                        <div
-                          className="h-[112%] w-full will-change-transform"
-                          style={{ transform: `translate3d(0, ${innerOffset}px, 0)` }}
-                        >
-                          <img
-                            src={item.image}
-                            alt={item.alt}
-                            loading="lazy"
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                      </div>
-                      <div className="mt-3 flex items-start justify-between gap-4">
-                        <h3 className={`${headingClass} text-lg text-[#0d1b5e]`}>{item.title}</h3>
-                        <p className="text-right text-base font-bold normal-case text-[#1e90ff]">{item.category}</p>
-                      </div>
-                    </Link>
-                  )
-                })}
+                {column.map((item) => renderWorkItem(item))}
               </div>
             )
           })}

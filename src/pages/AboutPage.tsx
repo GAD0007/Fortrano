@@ -90,24 +90,24 @@ const css = `
   .ab-cta {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
     background: #0d1b5e;
     color: #fff;
     text-decoration: none;
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
+    font-size: 0.875rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 17px 34px;
-    border-radius: 100px;
-    transition: background 0.22s, transform 0.2s, box-shadow 0.22s;
+    padding: 1rem 3rem;
+    box-shadow: 6px 6px 0 #1e90ff;
+    transition: transform 0.2s, box-shadow 0.2s;
     opacity: 0;
     animation: ab-up 0.7s 0.4s forwards;
   }
   .ab-cta:hover {
-    background: #1e90ff;
-    transform: translateY(-2px);
-    box-shadow: 0 14px 36px rgba(30,144,255,0.26);
+    transform: translateY(-3px);
+    box-shadow: 10px 10px 0 #1e90ff;
   }
   .ab-cta svg { transition: transform 0.2s; }
   .ab-cta:hover svg { transform: translateX(4px); }

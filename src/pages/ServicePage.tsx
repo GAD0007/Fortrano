@@ -258,25 +258,24 @@ const css = `
     z-index: 1;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: #1e90ff;
+    justify-content: center;
+    gap: 12px;
+    background: #0d1b5e;
     color: #fff;
     text-decoration: none;
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
+    font-size: 0.875rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 18px 36px;
-    border-radius: 100px;
+    padding: 1rem 3rem;
     white-space: nowrap;
-    transition: background 0.22s, transform 0.2s, box-shadow 0.22s;
+    box-shadow: 6px 6px 0 #1e90ff;
+    transition: transform 0.2s, box-shadow 0.2s;
     flex-shrink: 0;
   }
   .sp-cta-btn:hover {
-    background: #fff;
-    color: #0d1b5e;
-    transform: translateY(-2px);
-    box-shadow: 0 14px 36px rgba(30,144,255,0.26);
+    transform: translateY(-3px);
+    box-shadow: 10px 10px 0 #1e90ff;
   }
   .sp-cta-btn svg { transition: transform 0.2s; }
   .sp-cta-btn:hover svg { transform: translateX(4px); }

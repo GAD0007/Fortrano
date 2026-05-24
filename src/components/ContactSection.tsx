@@ -1,4 +1,4 @@
-import { h2Class } from '../lib/styles'
+import { ctaButtonClass, h2Class } from '../lib/styles'
 import { Link } from 'react-router-dom'
 
 function ContactSection() {
@@ -14,7 +14,7 @@ function ContactSection() {
           </h2>
           <Link
             to="/contact"
-            className="mt-11 inline-flex bg-[#1e90ff] px-12 py-4 text-base font-black uppercase text-white shadow-[7px_7px_0_#10b9e8] transition hover:-translate-y-1 hover:bg-white hover:text-[#0d1b5e] hover:shadow-[10px_10px_0_#10b9e8]"
+            className={`mt-11 ${ctaButtonClass}`}
           >
             Contact Us
           </Link>
