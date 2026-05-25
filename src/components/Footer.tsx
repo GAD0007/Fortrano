@@ -78,7 +78,7 @@ function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-base font-black uppercase text-white/40">
+        <p className="mt-8 whitespace-nowrap text-center text-xs font-black uppercase text-white/40 sm:text-base">
           Fortrano, Copyright 2026 | Privacy Policy
         </p>
       </div>
