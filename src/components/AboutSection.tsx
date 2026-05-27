@@ -18,12 +18,14 @@ function AboutSection() {
           <p className="max-w-[540px] text-base font-semibold leading-relaxed text-[#0d1b5e]/80 sm:text-lg">
             When your client-facing materials and communication aren't following an aligned strategy, the inconsistency becomes evident to everyone. If you're eager to grow and secure a steady stream of leads with a unified approach, we might be the right fit for you.
           </p>
-          <Link
-            to="/work"
-            className={`mt-7 ${ctaButtonClass}`}
-          >
-            Our Work
-          </Link>
+          <div className="mt-7 flex justify-center lg:justify-start">
+            <Link
+              to="/work"
+              className={ctaButtonClass}
+            >
+              Our Work
+            </Link>
+          </div>
         </div>
       </div>
     </section>

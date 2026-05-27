@@ -1,5 +1,4 @@
 import AboutSection from '../components/AboutSection'
-import ContactSection from '../components/ContactSection'
 import HeroSection from '../components/HeroSection'
 import NewsletterSection from '../components/NewsletterSection'
 import ServicesSection from '../components/ServicesSection'
@@ -17,7 +16,6 @@ function HomePage() {
       <WorkSection />
       <TestimonialSection />
       <NewsletterSection />
-      <ContactSection />
     </>
   )
 }

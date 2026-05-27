@@ -251,6 +251,14 @@ const css = `
   }
   .ct-submit svg { transition: transform 0.2s; }
   .ct-submit:hover svg { transform: translateX(4px); }
+  @media (max-width: 600px) {
+    .ct-submit {
+      display: flex;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 
   /* ── Keyframes ── */
   @keyframes ct-up {

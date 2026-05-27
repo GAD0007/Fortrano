@@ -106,9 +106,11 @@ function WorkSection({ showIntro = true }: WorkSectionProps) {
             <p className="max-w-[540px] text-base font-semibold leading-relaxed text-[#0d1b5e]/80 sm:text-lg">
               We are a brand-first agency, emphasizing the importance of creating a consistent and memorable brand experience for customers. This means aligning all aspects of a business, from products and services to marketing and customer interactions, with the core values and identity of the brand.
             </p>
-            <Link to="/work" className={`mt-7 ${ctaButtonClass}`}>
-              Our Work
-            </Link>
+            <div className="mt-7 flex justify-center lg:justify-start">
+              <Link to="/work" className={ctaButtonClass}>
+                Our Work
+              </Link>
+            </div>
           </div>
         </div>
       )}
