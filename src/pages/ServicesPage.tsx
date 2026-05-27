@@ -166,6 +166,9 @@ const css = `
     animation: sv-float 8s ease-in-out infinite;
     position: relative; z-index: 1;
   }
+  @media (max-width: 900px) {
+    .sv-band-visual { display: none; }
+  }
   @keyframes sv-float {
     0%,100% { transform: translateY(0px); }
     50%      { transform: translateY(-12px); }

@@ -259,7 +259,7 @@ function HeroSection() {
 
         {/* ── Stats ── */}
         <div
-          className="mt-8 flex flex-wrap items-center justify-center gap-8"
+          className="mt-8 grid w-full max-w-[540px] grid-cols-3 items-start"
           style={{ opacity: 0, animation: 'fadeUp 0.6s ease 1.7s forwards' }}
         >
           {[
@@ -267,16 +267,13 @@ function HeroSection() {
             { ref: c2Ref, label: 'Happy Clients' },
             { ref: c3Ref, label: 'Satisfaction Rate' },
           ].map((item, i) => (
-            <div key={i} className="flex items-center gap-8">
-              {i > 0 && <div className="h-10 w-px bg-[#0d1b5e]/10" />}
-              <div className="text-center">
-                <span ref={item.ref} className="block text-2xl font-black text-[#0d1b5e]">
-                  0<span style={{ color: '#1e90ff' }}>{i === 2 ? '%' : '+'}</span>
-                </span>
-                <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.18em] text-[#0d1b5e]/40">
-                  {item.label}
-                </span>
-              </div>
+            <div key={i} className={`px-2 text-center ${i > 0 ? 'border-l border-[#0d1b5e]/10' : ''}`}>
+              <span ref={item.ref} className="block text-xl font-black text-[#0d1b5e] sm:text-2xl">
+                0<span style={{ color: '#1e90ff' }}>{i === 2 ? '%' : '+'}</span>
+              </span>
+              <span className="mt-1 block text-[8px] font-bold uppercase leading-snug tracking-[0.08em] text-[#0d1b5e]/40 sm:text-[10px] sm:tracking-[0.18em]">
+                {item.label}
+              </span>
             </div>
           ))}
         </div>

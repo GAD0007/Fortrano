@@ -127,8 +127,8 @@ export const workColumns = [
     { title: 'Switch', category: 'Website', image: '/Screenshot (473).png', alt: 'Switch', href: '/contact' },
   ],
   [
-    // { title: 'Arthur Brooks', category: 'UI/UX', image: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/671135405388873aee2c993e_ACBLOGO_3%202.webp', alt: 'Arthur Brooks brand work', href: '/contact' },
-    { title: 'PCU', category: 'Website', image: '/Screenshot (470).png', alt: 'Precious Cornerstone University website', href: 'https://pcu-edu-ng.vercel.app/' },
+    { title: 'Everything Glow', category: 'Website', image: '/Screenshot (494).png', alt: 'Arthur Brooks brand work', href: 'https://everything-glow.com/' },
+    // { title: 'PCU', category: 'Website', image: '/Screenshot (470).png', alt: 'Precious Cornerstone University website', href: 'https://pcu-edu-ng.vercel.app/' },
     { title: 'Penaid', category: 'Visual Identity', image: '/Screenshot (477).png', alt: 'Penaid', href: 'https://www.behance.net/gallery/245555343/Penaid' },
   ],
   [
