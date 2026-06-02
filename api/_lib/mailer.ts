@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 
 function getRequiredEnv(name: 'SMTP_USER' | 'SMTP_PASSWORD') {
-  const value = process.env[name]
+  const value = process.env[name]?.trim()
 
   if (!value) {
     throw new Error(`${name} is not configured`)
@@ -20,10 +20,10 @@ export function escapeHtml(value: string) {
 }
 
 export function getMailClient() {
-  const port = Number(process.env.SMTP_PORT ?? '465')
+  const port = Number(process.env.SMTP_PORT?.trim() ?? '465')
 
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST ?? 'smtp.hostinger.com',
+    host: process.env.SMTP_HOST?.trim() || 'smtp.hostinger.com',
     port,
     secure: port === 465,
     auth: {
@@ -34,5 +34,5 @@ export function getMailClient() {
 }
 
 export function getMailbox() {
-  return process.env.MAIL_TO ?? getRequiredEnv('SMTP_USER')
+  return process.env.MAIL_TO?.trim() || getRequiredEnv('SMTP_USER')
 }
