@@ -9,9 +9,7 @@ function ContactSection() {
           <p className="mb-12 text-xs font-black uppercase tracking-[0.58em] text-[#1e90ff] sm:text-sm">
             Tell us about your project
           </p>
-          <h2 className={`${h2Class} mx-auto max-w-[980px] bg-gradient-to-r from-[#ffffff] via-[#10b9e8] to-[#1e90ff] bg-clip-text text-transparent`}>
-            Let's Make Cool<span className="block">Shit Together</span>
-          </h2>
+       <h2 className="font-black uppercase leading-none tracking-[-0.02em] text-[clamp(2rem,5vw,3.5rem)] mx-auto max-w-[980px] bg-gradient-to-r from-[#ffffff] via-[#10b9e8] to-[#1e90ff] bg-clip-text text-transparent">Let's Make Cool<span className="block">Shit Together</span></h2>
           <Link
             to="/contact"
             className={`mt-11 ${ctaButtonClass}`}
