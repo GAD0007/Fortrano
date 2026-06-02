@@ -13,10 +13,6 @@ function Navbar() {
 
   return (
     <div className="top-0 z-50 bg-white">
-      {/* Subtle gradient border line at the bottom of the navbar */}
-      <div className="absolute inset-x-0 bottom-0 h-[2px]"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(30,144,255,0.35) 30%, rgba(16,185,232,0.35) 70%, transparent)' }}
-      />
       <nav className="mx-auto flex max-w-[1230px] items-center justify-between px-3 py-3 sm:px-4 lg:px-4">
         <Link to="/" className="block w-[155px] sm:w-[210px]" aria-label="Fortrano Technology home">
           <img src="/IMG_9308.PNG" alt="Fortrano Technology" className="h-auto w-full object-contain" />
