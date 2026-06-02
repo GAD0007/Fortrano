@@ -1,3 +1,4 @@
+import { useState, type FormEvent } from 'react'
 import { h2Class } from '../lib/styles'
 
 const socialLinks = [
@@ -251,6 +252,16 @@ const css = `
   }
   .ct-submit svg { transition: transform 0.2s; }
   .ct-submit:hover svg { transform: translateX(4px); }
+  .ct-submit:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+  .ct-form-status {
+    margin-top: 22px;
+    color: rgba(13,27,94,0.72);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
   @media (max-width: 600px) {
     .ct-submit {
       display: flex;
@@ -272,6 +283,38 @@ const css = `
 `
 
 function ContactPage() {
+  const [status, setStatus] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setIsSubmitting(true)
+    setStatus('')
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      })
+      const result = (await response.json()) as { error?: string }
+
+      if (!response.ok) {
+        throw new Error(result.error)
+      }
+
+      form.reset()
+      setStatus('Thanks. Your message has been sent.')
+    } catch (error) {
+      setStatus(error instanceof Error && error.message ? error.message : 'Unable to send your message right now.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="ct-root">
       <style>{css}</style>
@@ -290,8 +333,8 @@ function ContactPage() {
           </p>
 
           <div className="ct-contact-links">
-            <a href="mailto:hello@fortranotech.com" className="ct-contact-link">
-              hello@fortranotech.com
+            <a href="mailto:info@fortranotech.com" className="ct-contact-link">
+              info@fortranotech.com
             </a>
             <a href="tel:+2340000000000" className="ct-contact-link">
               +234 000 000 0000
@@ -320,7 +363,8 @@ function ContactPage() {
 
         {/* ── Form card ── */}
         <div className="ct-form-wrap">
-          <div className="ct-form-card">
+          <form className="ct-form-card" onSubmit={handleSubmit}>
+            <input name="website" type="text" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
             <div className="ct-field-row">
               <label>
                 <span className="ct-label">Name</span>
@@ -344,13 +388,14 @@ function ContactPage() {
               </label>
             </div>
 
-            <button type="submit" className="ct-submit">
-              Send Message
+            <button type="submit" className="ct-submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
               <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.4" viewBox="0 0 24 24">
                 <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-          </div>
+            {status && <p className="ct-form-status" role="status">{status}</p>}
+          </form>
         </div>
       </div>
     </div>
