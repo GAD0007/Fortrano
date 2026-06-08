@@ -1,4 +1,4 @@
-import { ctaButtonClass, h2Class } from '../lib/styles'
+import { ctaButtonClass } from '../lib/styles'
 import { Link } from 'react-router-dom'
 
 function ContactSection() {
