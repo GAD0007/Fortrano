@@ -31,18 +31,20 @@ function TestimonialSection() {
           </div>
         </div>
 
-        <blockquote>
+        <blockquote className="mx-auto max-w-[920px] text-left lg:mx-0">
           <div className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-black uppercase tracking-[0.35em] sm:text-sm">
-            <cite className="not-italic text-white">Ada Williams</cite>
+            <cite className="not-italic text-white">Solomon Chibueze Onu</cite>
             <span className="text-[#1e90ff]">-</span>
             <span className="font-black text-white/60">Founder, EverythingGlow, Adfusion HQ, Adfusion Brandhouse</span>
           </div>
-         <h3 className={`${h3Class} max-w-[920px] text-white`}>
-  Fortrano brought our brand, product, and vision together seamlessly.
-</h3>
-<p className="mt-8 max-w-[540px] text-base font-semibold leading-relaxed text-white/70 sm:text-lg">
-  Their expertise in branding, UI/UX, and development helped us create a digital experience that feels modern, intuitive, and professional. The entire process was smooth, collaborative, and focused on delivering measurable results.
-</p>
+          <h3 className={`${h3Class} text-white`}>
+            FortranoTech Brought our brand
+           
+            Product and vision together 
+          </h3>
+          <p className="mt-4 max-w-[620px] text-justify text-base font-semibold leading-relaxed text-white/70 sm:text-lg">
+            Their expertise in branding, UI/UX, and development helped us create a digital experience that feels modern, intuitive, and professional. The entire process was smooth, collaborative, and focused on delivering measurable results.
+          </p>
         </blockquote>
       </div>
     </section>
