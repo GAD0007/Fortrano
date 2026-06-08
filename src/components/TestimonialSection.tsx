@@ -23,7 +23,7 @@ function TestimonialSection() {
           <span className="absolute -left-10 -top-24 text-[13rem] font-black leading-none text-[#1e90ff]">"</span>
           <div className="relative border-[10px] border-[#1e90ff] bg-white shadow-[14px_14px_0_rgba(30,144,255,0.25)]">
             <img
-              src="public/WhatsApp Image 2026-06-05 at 18.41.07.jpeg"
+              src="/WhatsApp Image 2026-06-05 at 18.41.07.jpeg"
               alt="Client portrait"
               className="aspect-square w-full object-cover"
               loading="lazy"
