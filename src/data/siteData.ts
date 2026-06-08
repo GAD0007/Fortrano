@@ -53,7 +53,7 @@ export const services = [
   {
     href: '/services/digital-skills-training',
     title: ['Digital Skills', 'Training'],
-    description: 'Hands-on training in web development, app development, UI/UX design, and digital marketing - built for beginners and professionals ready to level up.',
+    description: 'Practical digital skills training across website development, app development, UI/UX design, graphics, branding, and SEO - built for learners ready to create with confidence.',
     color: '#10b9e8',
     textColor: 'dark',
     imgSrc: 'https://cdn.prod.website-files.com/67111d17075272cb596eba3d/672a57d642a44c7bc88dd536_Group%2048096006.webp',

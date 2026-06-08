@@ -91,14 +91,12 @@ function WorkSection({ showIntro = true }: WorkSectionProps) {
           <div>
             <p className="mb-5 text-xs font-black uppercase tracking-[0.48em] text-[#1e90ff]">Who we are</p>
             <h2 className={`${h2Class} text-[#0d1b5e]`}>
-              Beauty may be
+              Brands built
               <br />
-              skin deep - but
-              <br />
-              your brand goes
+              to move
               <br />
               <span className="bg-gradient-to-r from-[#7dd3fc] via-[#38bdf8] to-[#bae6fd] bg-[length:100%_0.42em] bg-bottom bg-no-repeat">
-                clean to the bone.
+                with purpose.
               </span>
             </h2>
           </div>

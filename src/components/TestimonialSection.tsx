@@ -23,9 +23,9 @@ function TestimonialSection() {
           <span className="absolute -left-10 -top-24 text-[13rem] font-black leading-none text-[#1e90ff]">"</span>
           <div className="relative border-[10px] border-[#1e90ff] bg-white shadow-[14px_14px_0_rgba(30,144,255,0.25)]">
             <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80"
+              src="public/WhatsApp Image 2026-06-05 at 18.41.07.jpeg"
               alt="Client portrait"
-              className="aspect-square w-full object-cover grayscale"
+              className="aspect-square w-full object-cover"
               loading="lazy"
             />
           </div>
@@ -35,14 +35,14 @@ function TestimonialSection() {
           <div className="mb-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-black uppercase tracking-[0.35em] sm:text-sm">
             <cite className="not-italic text-white">Ada Williams</cite>
             <span className="text-[#1e90ff]">-</span>
-            <span className="font-black text-white/60">Founder, BlueNova</span>
+            <span className="font-black text-white/60">Founder, EverythingGlow, Adfusion HQ, Adfusion Brandhouse</span>
           </div>
-          <h3 className={`${h3Class} max-w-[920px] text-white`}>
-            Fortrano made our brand feel premium, modern, and ready to scale
-          </h3>
-          <p className="mt-8 max-w-[540px] text-base font-semibold leading-relaxed text-white/70 sm:text-lg">
-            We needed a partner who could sharpen our brand, improve the website experience, and keep the launch moving. The Fortrano team brought structure, taste, and speed to the whole process. Everything finally felt aligned, confident, and built for growth.
-          </p>
+         <h3 className={`${h3Class} max-w-[920px] text-white`}>
+  Fortrano brought our brand, product, and vision together seamlessly.
+</h3>
+<p className="mt-8 max-w-[540px] text-base font-semibold leading-relaxed text-white/70 sm:text-lg">
+  Their expertise in branding, UI/UX, and development helped us create a digital experience that feels modern, intuitive, and professional. The entire process was smooth, collaborative, and focused on delivering measurable results.
+</p>
         </blockquote>
       </div>
     </section>

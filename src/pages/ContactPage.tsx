@@ -3,19 +3,18 @@ import { h2Class } from '../lib/styles'
 
 const socialLinks = [
   {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com',
+    label: 'WhatsApp',
+    href: 'https://wa.me/2349061690280',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-        <rect x="2" y="9" width="4" height="12" />
-        <circle cx="4" cy="4" r="2" />
+        <path d="M3 21l1.45-4.35A8.5 8.5 0 1 1 7.5 19.5L3 21z" />
+        <path d="M8.5 9.5c.4 2.2 2.3 4.1 4.5 4.7l1.5-1.5 2 1a1 1 0 0 1 .5 1.1c-.3 1.2-1.4 2-2.6 2C9.9 16.8 6.2 13.1 6.2 8.6c0-1.2.8-2.3 2-2.6a1 1 0 0 1 1.1.5l1 2-1.8 1.5z" />
       </svg>
     ),
   },
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com',
+    href: 'https://www.instagram.com/fortranotech?igsh=MW02ZXZvaTJ0aDQyMQ%3D%3D&utm_source=qr',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -26,7 +25,7 @@ const socialLinks = [
   },
   {
     label: 'X',
-    href: 'https://x.com',
+    href: 'https://x.com/fortranotech?s=11',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4l16 16M4 20L20 4" />
@@ -35,7 +34,7 @@ const socialLinks = [
   },
   {
     label: 'Facebook',
-    href: 'https://www.facebook.com',
+    href: 'https://www.facebook.com/share/18ytTfYyyK/?mibextid=wwXIfr',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -336,8 +335,8 @@ function ContactPage() {
             <a href="mailto:info@fortranotech.com" className="ct-contact-link">
               info@fortranotech.com
             </a>
-            <a href="tel:+2340000000000" className="ct-contact-link">
-              +234 000 000 0000
+            <a href="tel:+2349061690280" className="ct-contact-link">
+             +234  906 169 0280
             </a>
             <p className="ct-location">Lagos, Nigeria · Remote Worldwide</p>
           </div>

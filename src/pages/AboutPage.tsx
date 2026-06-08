@@ -3,14 +3,14 @@ import { h2Class, h3Class } from '../lib/styles'
 
 const companyFacts = [
   { label: 'Company name', value: 'Fortrano Technology' },
-  { label: 'Business focus', value: 'Branding, marketing strategy, UI/UX design, and web development' },
+  { label: 'Business focus', value: 'Web development, App development, UI/UX, Brand Identity, Graphics Designing and Tutoring' },
   { label: 'Location', value: 'Lagos, Nigeria' },
   { label: 'Availability', value: 'Remote Worldwide' },
 ]
 
 const registrationDetails = [
   { label: 'Registration authority', value: 'Corporate Affairs Commission (CAC), Nigeria' },
-  { label: 'Business registration number', value: 'To be added' },
+  { label: 'Business registration number', value: '9446759' },
 ]
 
 const values = [
@@ -214,6 +214,13 @@ const css = `
   .ab-panel-title { margin-bottom: 18px; }
   .ab-panel-dark .ab-panel-title { color: #fff; }
   .ab-panel-light .ab-panel-title { color: #0d1b5e; }
+  .ab-official-title {
+    white-space: nowrap;
+    font-size: 2rem;
+  }
+  @media (max-width: 600px) {
+    .ab-official-title { font-size: 1.35rem; }
+  }
 
   .ab-panel-body {
     font-size: 1.02rem;
@@ -387,7 +394,7 @@ function AboutPage() {
 
           <div className="ab-panel ab-panel-light">
             <div className="ab-panel-tag">Business Registration</div>
-            <h2 className={`${h3Class} ab-panel-title`}>Official Details</h2>
+            <h2 className={`${h3Class} ab-panel-title ab-official-title`}>Official Details</h2>
             {registrationDetails.map((item) => (
               <div key={item.label} className="ab-reg-row">
                 <div className="ab-reg-label">{item.label}</div>

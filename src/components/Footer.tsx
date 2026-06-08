@@ -7,11 +7,6 @@ const quickLinks = [
   { label: 'Contact us', to: '/contact' },
 ]
 
-const legalLinks = [
-  { label: 'Privacy Policy', to: '/privacy-policy' },
-  { label: 'FAQs', to: '/faqs' },
-]
-
 const contactLinks = [
   { label: 'Start a project', to: '/contact' },
   { label: 'Enroll', to: '/services/digital-skills-training' },
@@ -20,6 +15,7 @@ const contactLinks = [
 const socialLinks = [
   {
     label: 'Instagram',
+    href: 'https://www.instagram.com/fortranotech?igsh=MW02ZXZvaTJ0aDQyMQ%3D%3D&utm_source=qr',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
@@ -30,34 +26,37 @@ const socialLinks = [
     ),
   },
   {
-    label: 'LinkedIn',
+    label: 'WhatsApp',
+    href: 'https://wa.me/2349061690280',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
           fill="currentColor"
-          d="M6.94 8.88H3.67V21h3.27V8.88ZM7.23 5.14A1.88 1.88 0 1 0 3.46 5.1a1.88 1.88 0 0 0 3.77.04ZM21 14.05c0-3.26-1.74-4.78-4.06-4.78a3.48 3.48 0 0 0-3.17 1.74h-.05V8.88H10.6V21h3.26v-6c0-1.58.3-3.1 2.25-3.1 1.92 0 1.95 1.8 1.95 3.2V21H21v-6.95Z"
-        />
-      </svg>
-    ),
-  },
-  {
-    label: 'YouTube',
-    icon: (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M21.58 7.19a2.74 2.74 0 0 0-1.93-1.94C17.95 4.8 12 4.8 12 4.8s-5.95 0-7.65.45a2.74 2.74 0 0 0-1.93 1.94A28.5 28.5 0 0 0 2 12a28.5 28.5 0 0 0 .42 4.81 2.74 2.74 0 0 0 1.93 1.94c1.7.45 7.65.45 7.65.45s5.95 0 7.65-.45a2.74 2.74 0 0 0 1.93-1.94A28.5 28.5 0 0 0 22 12a28.5 28.5 0 0 0-.42-4.81ZM10 15.2V8.8l5.45 3.2L10 15.2Z"
+          d="M12.04 2a9.93 9.93 0 0 0-8.51 15.06L2.4 21.6l4.66-1.1A9.94 9.94 0 1 0 12.04 2Zm0 2a7.94 7.94 0 1 1-4.05 14.77l-.35-.2-2.78.66.67-2.68-.23-.38A7.94 7.94 0 0 1 12.04 4Zm-3.5 4.18c-.18 0-.46.07-.7.34-.24.26-.92.9-.92 2.2s.94 2.55 1.07 2.72c.13.18 1.82 2.92 4.5 3.97 2.23.88 2.68.7 3.16.66.49-.04 1.56-.64 1.78-1.25.22-.62.22-1.14.15-1.25-.06-.11-.24-.18-.5-.31-.26-.13-1.56-.77-1.8-.86-.24-.09-.42-.13-.6.13-.17.26-.68.86-.83 1.03-.15.18-.31.2-.57.07-.26-.13-1.1-.4-2.1-1.28-.78-.69-1.3-1.55-1.45-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.31.39-.46.13-.15.17-.26.26-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.45-.82-1.98-.22-.52-.44-.45-.6-.46h-.51Z"
         />
       </svg>
     ),
   },
   {
     label: 'X',
+    href: 'https://x.com/fortranotech?s=11',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
           fill="currentColor"
           d="M13.86 10.47 21.14 2h-1.72l-6.32 7.35L8.05 2H2.23l7.64 11.12L2.23 22h1.72l6.64-7.72L15.95 22h5.82l-7.91-11.53Zm-2.35 2.73-.77-1.1L4.58 3.3h2.64l4.97 7.1.77 1.1 6.46 9.23h-2.64l-5.27-7.53Z"
+        />
+      </svg>
+    ),
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/share/18ytTfYyyK/?mibextid=wwXIfr',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M14 8.5V6.75c0-.5.35-.75.87-.75H17V2.2c-.37-.05-1.65-.16-3.14-.16-3.1 0-5.23 1.9-5.23 5.38V8.5H5.12V13h3.51v9H14v-9h3.68l.58-4.5H14Z"
         />
       </svg>
     ),
@@ -83,7 +82,9 @@ function Footer() {
             {socialLinks.map((link) => (
               <a
                 key={link.label}
-                href="#"
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
                 aria-label={link.label}
                 className="flex h-5 w-5 items-center justify-center transition hover:text-[#0b1d5f]"
               >
@@ -93,22 +94,11 @@ function Footer() {
           </div>
         </div>
 
-        <nav className="grid gap-9 text-sm font-bold sm:grid-cols-3 lg:gap-14" aria-label="Footer">
+        <nav className="grid gap-9 text-sm font-bold sm:grid-cols-2 lg:gap-14" aria-label="Footer">
           <div>
             <h2 className="mb-5 text-sm font-black">Quick Links</h2>
             <div className="grid gap-4">
               {quickLinks.map((link) => (
-                <Link key={link.label} to={link.to} className="whitespace-nowrap transition hover:text-[#0056c7]">
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="mb-5 text-sm font-black">Legal</h2>
-            <div className="grid gap-4">
-              {legalLinks.map((link) => (
                 <Link key={link.label} to={link.to} className="whitespace-nowrap transition hover:text-[#0056c7]">
                   {link.label}
                 </Link>
