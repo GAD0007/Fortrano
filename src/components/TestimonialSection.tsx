@@ -38,9 +38,8 @@ function TestimonialSection() {
             <span className="font-black text-white/60">Founder, EverythingGlow, Adfusion HQ, Adfusion Brandhouse</span>
           </div>
           <h3 className={`${h3Class} text-white`}>
-            FortranoTech Brought our brand
-           
-            Product and vision together 
+            Fortrano Tech Brought our brand 
+           Product and vision together 
           </h3>
           <p className="mt-4 max-w-[620px] text-justify text-base font-semibold leading-relaxed text-white/70 sm:text-lg">
             Their expertise in branding, UI/UX, and development helped us create a digital experience that feels modern, intuitive, and professional. The entire process was smooth, collaborative, and focused on delivering measurable results.

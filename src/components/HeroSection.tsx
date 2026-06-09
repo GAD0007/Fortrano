@@ -230,10 +230,10 @@ function HeroSection() {
 
         {/* ── Subtitle ── */}
         <p
-          className="max-w-[540px] text-base font-semibold leading-relaxed text-[#0d1b5e]/60 sm:text-lg"
+          className="max-w-[700px] text-base font-semibold leading-relaxed text-[#0d1b5e]/60 sm:text-lg"
           style={{ opacity: 0, animation: 'fadeUp 0.6s ease 1.3s forwards' }}
         >
-          An integrated branding, strategy, and web development studio that helps ambitious companies stand out with sharp digital experiences.
+         At Fortrano Tech, we help businesses establish a powerful digital presence through strategic web design, branding, digital marketing, and technology solutions. Our focus is simple — helping brands attract the right audience, build credibility, and achieve measurable growth through innovative digital experiences.
         </p>
 
         {/* ── CTA ── */}

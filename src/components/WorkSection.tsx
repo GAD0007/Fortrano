@@ -87,24 +87,22 @@ function WorkSection({ showIntro = true }: WorkSectionProps) {
   return (
     <section id="work" ref={sectionRef} className="overflow-hidden bg-white text-[#0d1b5e]">
       {showIntro && (
-        <div className="mx-auto grid max-w-[1230px] gap-8 px-5 py-12 sm:px-8 sm:py-14 md:gap-12 md:py-16 lg:grid-cols-2 lg:px-10 lg:py-20">
+        <div className="mx-auto grid max-w-[1500px] gap-8 px-4 py-12 sm:px-6 sm:py-14 md:gap-12 md:px-6 md:py-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(380px,0.88fr)] lg:px-8 lg:py-20 xl:px-10">
           <div>
             <p className="mb-5 text-xs font-black uppercase tracking-[0.48em] text-[#1e90ff]">Who we are</p>
-            <h2 className={`${h2Class} text-[#0d1b5e]`}>
+            <h2 className={`${h2Class} text-[#0d1b5e]`} style={{ fontSize: 'clamp(1.15rem, 4vw, 2.75rem)' }}>
               Brands built
               <br />
-              to move
-              <br />
-              <span className="bg-gradient-to-r from-[#7dd3fc] via-[#38bdf8] to-[#bae6fd] bg-[length:100%_0.42em] bg-bottom bg-no-repeat">
-                with purpose.
+              <span className="whitespace-nowrap bg-gradient-to-r from-[#7dd3fc] via-[#38bdf8] to-[#bae6fd] bg-[length:100%_0.42em] bg-bottom bg-no-repeat">
+                to move with purpose.
               </span>
             </h2>
           </div>
           <div className="self-end">
-            <p className="max-w-[540px] text-base font-semibold leading-relaxed text-[#0d1b5e]/80 sm:text-lg">
+            <p className="w-full max-w-none text-base font-semibold leading-relaxed text-[#0d1b5e]/80 sm:text-lg lg:max-w-[540px]">
               We are a brand-first agency, emphasizing the importance of creating a consistent and memorable brand experience for customers. This means aligning all aspects of a business, from products and services to marketing and customer interactions, with the core values and identity of the brand.
             </p>
-            <div className="mt-7 flex justify-center lg:justify-start">
+            <div className="mt-7 flex justify-center md:justify-start">
               <Link to="/work" className={ctaButtonClass}>
                 Our Work
               </Link>
